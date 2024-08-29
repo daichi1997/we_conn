@@ -149,3 +149,31 @@ footer {
  }
 }
 
+/*devise両画面*/
+
+.back{
+ background-color:  #3498db;
+ height: 100%;
+ width: 100%;
+}
+
+h2{
+ text-align: center;
+ margin-top: 70px;
+ font-size: 30px;
+}
+
+.field{
+ text-align: center;
+ margin-top: 20px;
+}
+
+.actions{
+ text-align: center;
+ margin-top: 20px;
+}
+
+.space{
+ background-color:  #3498db;
+ height: 50vh;
+}
