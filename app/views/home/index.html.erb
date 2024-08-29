@@ -12,23 +12,16 @@
 
   <body>
     <header>
-      <nav>
-        <div><%= link_to 'WE Conn', root_path, class: "logo" %></div>
-        <ul class="nav-links">
-          <li><%= link_to 'イベント一覧', events_path %></li>
-          <% if user_signed_in? %>
-            <li><%= link_to 'イベント作成', new_event_path %></li>
-            <li><%= link_to 'マイページ', user_path(current_user) %></li>
-            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to '新規登録', new_user_registration_path %></li>
-            <li><%= link_to 'ログイン', new_user_session_path %></li>
-          <% end %>
-        </ul>
-      </nav>
+          <div class="heads">どこかに行きたい気持ちを繋ぐ。"Wanna go Event Connect"</div>
     </header>
 
-    <main class="main-content">
+    <main class="main-content_home">
+          <div class="logo_home"> WE Conn</div>
+            <li><%= link_to '新規登録', new_user_registration_path, class: "home_lists" %></li>
+            <li><%= link_to 'ログイン', new_user_session_path, class: "home_lists"  %></li>
+            <li><%= link_to 'ゲスト', events_path, class: "home_lists"  %></li>
+            </div>
+
       <%= yield %>
     </main>
 
