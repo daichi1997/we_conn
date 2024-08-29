@@ -1,0 +1,151 @@
+header {
+ background-color: #3498db;
+ padding: 1rem;
+ box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.heads{
+color: #ecf0f1;
+text-align: center;
+}
+
+
+
+nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ max-width: 1200px;
+ margin: 0 auto;
+}
+
+.logo {
+ font-size: 1.5rem;
+ font-weight: bold;
+ color: white;
+}
+
+.nav-links {
+ list-style: none;
+ display: flex;
+ gap: 1rem;
+}
+
+.nav-links a {
+ color: white;
+ text-decoration: none;
+ transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+ color: #ecf0f1;
+}
+
+body {
+ display: flex;
+ flex-direction: column;
+ min-height: 100vh;
+}
+
+.main-content {
+ flex: 1;
+ background-image: url('IMG_9265.jpg');
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ position: relative;
+ opacity: 90%;
+}
+
+.main-content_home {
+ flex: 1;
+ background-image: url('IMG_9265.jpg');
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ position: relative;
+ opacity: 80%;
+}
+
+
+.main-content::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: rgba(255, 255, 255, 0.7); /* 白色の半透明オーバーレイ */
+ z-index: -1;
+}
+
+.main-content_home > * {
+ text-align: center;
+ list-style: none;
+ justify-content: space-around;
+ text-decoration: none;
+ margin-top: 47px;
+
+}
+
+/* HOME */
+.logo_home{
+ font-size: 3rem;
+ font-weight: bold;
+ color: orange;
+ align-items: center;
+ text-decoration: none;
+}
+
+.home_lists{
+ font-size: 30px;
+ text-decoration: none;
+ color:orange;
+ font-weight: bold;
+
+}
+
+/* フッタースタイル */
+footer {
+ background-color: #34495e;
+ color: white;
+ padding: 1rem;
+ margin-top: 0px
+}
+
+.footer-content {
+ max-width: 1200px;
+ margin: 0 auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.footer-links {
+ list-style: none;
+ display: flex;
+ gap: 1rem;
+}
+
+.footer-links a {
+ color: #bdc3c7;
+ text-decoration: none;
+ transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+ color: white;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+ nav, .footer-content {
+   flex-direction: column;
+   align-items: flex-start;
+ }
+
+ .nav-links, .footer-links {
+   margin-top: 1rem;
+ }
+}
+
