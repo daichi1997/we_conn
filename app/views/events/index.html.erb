@@ -1,1 +1,32 @@
-スタート
+
+<div class="container mt-5">
+  <h1 class="mb-4">イベント一覧</h1>
+
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <%= image_tag event.image.variant(resize: "300x200^", gravity: "center", crop: "300x200+0+0"), class: "card-img-top" if event.image.attached? %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to event.title, event_path(event) %></h5>
+            <p class="card-text"><%= truncate(event.description, length: 100) %></p>
+            <p class="card-text">
+              <small class="text-muted">
+                主催者: <%= link_to event.user.name, user_path(event.user) %>
+              </small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">
+                開催日: <%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="text-center mt-4">
+    <%= link_to '新規イベント作成', new_event_path, class: 'btn btn-primary' %>
+  </div>
+</div>
