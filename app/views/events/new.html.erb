@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="mb-4">新規イベント作成</h1>
+
+      <%= render 'shared/form', event: @event %>
+
+      <div class="mt-3">
+        <%= link_to 'イベント一覧に戻る', events_path, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>
