@@ -13,13 +13,13 @@ class UsersController < ApplicationController
       user_params.delete(:password)
       user_params.delete(:password_confirmation)
     end
-  
+
     successfully_updated = if needs_password?(@user, user_params)
                              @user.update(user_params)
                            else
                              @user.update_without_password(user_params)
                            end
-  
+
     if successfully_updated
       redirect_to @user, notice: '更新しました。'
     else
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
 
   private
 
@@ -36,15 +35,15 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    unless @user == current_user
-      redirect_to root_path, alert: '権限がありません。'
-    end
+    return if @user == current_user
+
+    redirect_to root_path, alert: '権限がありません。'
   end
 
   def user_params
     params.require(:user).permit(:name, :bio, :password, :password_confirmation)
   end
-  
+
   def needs_password?(_user, params)
     params[:password].present?
   end
