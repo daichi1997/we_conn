@@ -1,0 +1,12 @@
+<div class="usershow">
+
+  <div class="username"><%= @user.name %>さん</div>
+  <div class="bio"> <%= @user.bio %></div>
+</div>
+<br>
+<br>
+<% if current_user == @user %>
+
+  <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'edit-profile-btn' %>
+<% end %>
+
