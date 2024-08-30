@@ -7,7 +7,7 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "ニックネーム" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "ニックネーム(2～10文字)" %>
   </div>
   
   <div class="field">
@@ -20,7 +20,7 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" ,placeholder: "6文字以内の半角英数字"%>
+    <%= f.password_field :password, autocomplete: "new-password" ,placeholder: "6文字以上の半角英数字"%>
   </div>
 
   <div class="field">
