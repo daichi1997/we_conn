@@ -1,0 +1,8 @@
+<h2>日時と場所</h2>
+<%= form_for @event, url: wizard_path do |f| %>
+  <%= f.label :start_time %>
+  <%= f.datetime_local_field :start_time %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <%= f.submit '次へ' %>
+<% end %>
