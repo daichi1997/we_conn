@@ -1,0 +1,13 @@
+<h2>画像アップロード（任意）</h2>
+
+<%= form_for @event, url: wizard_path, method: :put, html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :image, '画像（任意）' %>
+    <%= f.file_field :image, class: 'form-control-file' %>
+  </div>
+
+  <div class="form-group mt-3">
+    <%= f.submit '画像をアップロードして次へ', class: 'btn btn-primary' %>
+    <%= f.submit '画像なしで次へ', name: 'skip_image', class: 'btn btn-secondary' %>
+  </div>
+<% end %>

@@ -10,16 +10,25 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = current_user.events.build
+    # default_tag = Tag.find_by(name: 'その他') || Tag.first
+
+    @event = current_user.events.build(title: "未設定",description: "説明未設定",start_time: Time.current,location: "未設定",
+
+    )  # 一時的なタイトルを設定
+    if @event.save(validate: false)
+      redirect_to event_event_step_path(@event, :basic_info)
+    else
+      redirect_to events_path, alert: 'イベントの作成に失敗しました。'
+    end
   end
 
   def create
-    @event = current_user.events.build(event_params)
+    @event = Event.new(event_params)
     if @event.save
-      redirect_to @event, notice: 'Event was successfully created.'
+      redirect_to event_step_path(@event, :basic_info)
     else
       render :new
-    end
+      end
 
   end
 
