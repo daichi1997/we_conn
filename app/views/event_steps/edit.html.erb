@@ -1,0 +1,40 @@
+<h2>イベント編集</h2>
+
+<%= form_for @event, url: wizard_path, method: :put, html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :start_time %>
+    <%= f.datetime_select :start_time, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :location %>
+    <%= f.text_field :location, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <h4>現在の画像:</h4>
+    <% if @event.image.attached? %>
+      <div class="event-image">
+        <%= image_tag @event.image.variant(resize_to_limit: [500, 300]), class: "img-fluid" %><br>
+        <br>
+        <%= button_to '画像を削除', delete_image_event_step_path(@event), method: :delete, data: { confirm: '本当に画像を削除しますか？' }, class: 'btn btn-danger' %>
+      </div>
+    <% else %>
+      <p>画像はアップロードされていません。</p>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit '更新', class: 'btn btn-primary' %>
+  </div>
+<% end %>

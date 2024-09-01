@@ -11,26 +11,22 @@ class EventsController < ApplicationController
 
   def new
     # default_tag = Tag.find_by(name: 'その他') || Tag.first
-
-    @event = current_user.events.build(title: "未設定",description: "説明未設定",start_time: Time.current,location: "未設定",
-
-    )  # 一時的なタイトルを設定
+    @event = current_user.events.build(
+      title: "",
+      description: "",
+      start_time: Time.current,
+      location: ""
+    )
+    
     if @event.save(validate: false)
       redirect_to event_event_step_path(@event, :basic_info)
     else
-      redirect_to events_path, alert: 'イベントの作成に失敗しました。'
+      # エラーハンドリング
+      flash[:alert] = "イベントの作成に失敗しました。"
+      redirect_to events_path
     end
   end
 
-  def create
-    @event = Event.new(event_params)
-    if @event.save
-      redirect_to event_step_path(@event, :basic_info)
-    else
-      render :new
-      end
-
-  end
 
   def edit
   end
@@ -55,6 +51,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time,:location,:image).merge(user_id: current_user.id)
+    params.require(:event).permit(:title, :description, :start_time,:location,:image)
   end
 end

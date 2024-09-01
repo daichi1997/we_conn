@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:show,:edit,:update]  
   resources :events do
-    resources :event_steps,controller: 'event_steps'
-  end
+    resources :event_steps,controller: 'event_steps' do
+      delete 'delete_image', on: :member
+   end
+ end
   root to: 'home#index'
 
 end
