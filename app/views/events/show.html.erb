@@ -1,0 +1,24 @@
+<h2><%= @event.title %></h2>
+
+<div class="event-details">
+ <ul>
+    <li class="all_form" >概要: <%= @event.description %>
+    <li class="all_form" >日時: <%= @event.start_time.strftime("%Y-%m-%d %H:%M") %>
+    <li class="all_form" >場所: <%= @event.location %>
+  </ul>
+    <% if @event.image.attached? %>
+    <%= image_tag @event.image.variant(resize_to_limit: [500, 300]), class: "event-image"%>
+  <% end %>
+    <ul>
+    <li class="all_form" >投稿者: <%= link_to @event.user.name, user_path(@event.user), class: "userlink" %>
+    </ul>
+    <% if user_signed_in? && @event.user == current_user %>
+    <div class="event-actions">
+      <%= link_to '編集', edit_event_path(@event), class: 'edit_btn' %>
+<%= link_to '削除', event_path(@event), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'delete_btn' %>    </div>
+  <% end %>
+</div>
+
+<div class="redirect">
+  <%= link_to 'イベント一覧ページに戻る', events_path, class: "redirect_btn" %>
+</div>

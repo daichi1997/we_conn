@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <% flash.each do |type, message| %>
+  <div class="alert <%= type == 'notice' ? 'alert-success' : 'alert-danger' %>" role="alert">
+    <%= message %>
+  </div>
+<% end %>
     <header>
       <nav>
         <div><%= link_to 'WE Conn', root_path, class: "logo" %></div>
