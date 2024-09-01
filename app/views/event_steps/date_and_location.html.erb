@@ -1,8 +1,14 @@
+
 <h2>日時と場所</h2>
+<div class="date_form">
 <%= form_for @event, url: wizard_path do |f| %>
-  <%= f.label :start_time %>
-  <%= f.datetime_local_field :start_time %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <%= f.submit '次へ' %>
+    <ul>
+    <li class="all_form" ><%= f.label :start_time,"予定日時" %><br>
+    <li class="all_form" ><%= f.datetime_local_field :start_time,placeholder:Time.current.strftime('%Y-%m-%d %H:%M'),
+                     value: @event.start_time.strftime('%Y-%m-%d %H:%M') %><br>
+    <li class="all_form" ><%= f.label :location,"場所" %><br>
+    <li class="all_form" ><%= f.text_field :location,placeholder:"場所を指定してください" %><br>
+    <li class="all_form" ><%= f.submit '次へ' ,class: "next_button" %>
+    </ul>
+</div>
 <% end %>

@@ -214,3 +214,81 @@ margin:  42%;
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
 }
+
+.basic_info{
+  text-align: center;
+  margin-top: 16px;
+}
+
+.next_button{
+  width: 100px;
+  background-color: #3498db;
+  font-weight: 600;
+  color: white;
+}
+
+.all_form{
+  margin-bottom: 30px;
+}
+
+.description{
+  width: 320px;
+  height: 100px;
+}
+
+.title_form{
+  width: 250px;
+}
+
+.date_form{
+  text-align: center;
+  margin-top: 16px;
+}
+
+.image_form{
+  text-align: center;
+  margin-top: 16px;
+
+}
+
+.event-confirmation{
+  text-align: center;
+}
+
+.success_btn{
+  width: 200px;
+  background-color: #3498db;
+  font-weight: 600;
+  color: white;
+  margin: 25px 0 25px;
+}
+
+
+.finaledit_btn{
+  font-weight: 600;
+  color:darkblue;
+}
+
+
+
+.check{ 
+  border: 1px solid black;
+  background-color: white;
+  width:300px;
+  margin: 16px auto;
+}
+
+.final_check{
+height: 30px;
+font-weight: 900;
+border:1px solid  red;
+background-color: yellow;
+width: 400px;
+margin: 0 auto;
+padding-top: 10px;
+}
+
+.final_root{
+  margin-top: 25px;
+}
+

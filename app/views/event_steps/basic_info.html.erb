@@ -1,8 +1,12 @@
-<h2>基本情報</h2>
+<h2>新規イベント投稿</h2>
 <%= form_for @event, url: wizard_path do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <%= f.submit '次へ' %>
+<div class="basic_info">
+  <ul>
+  <li class="all_form" ><%= f.label :title ,"イベントタイトル"%><br></li>
+  <li class="all_form"><%= f.text_field :title ,class:"title_form",placeholder: "イベント名を入力してください"%><br></li>
+  <li class="all_form"><%= f.label :description,"概要欄" %><br></li>
+  <li class="all_form"><%= f.text_area :description,class:"description",placeholder: "イベントリンクと内容を入力してください" %><br></li>
+  <li class="all_form"><%= f.submit '次へ', class: "next_button" %></li>
+  </ul>
+</div>
 <% end %>
