@@ -1,0 +1,6 @@
+            <div id="like-btn<%= event.id %>">
+          <% if user_signed_in? && event.liked_by?(current_user)%>
+          <%=link_to "いいね済", event_like_path(event.id),  data: { turbo_method: :delete }, class: "tweet_likes" %>
+                <% else %>
+             <%=link_to "いいねする", event_likes_path(event.id), data: { turbo_method: :post }, class: "tweet_likes" %>
+                 <% end %>
