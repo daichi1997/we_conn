@@ -2,6 +2,10 @@
 
 <%= form_for @event, url: wizard_path, method: :put, html: { multipart: true } do |f| %>
   <div class="form-group">
+
+    <%= f.label :tag_id, "タグ" %>
+    <%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: "タグを選択してください" %>
+
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>

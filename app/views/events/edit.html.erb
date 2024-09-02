@@ -12,6 +12,9 @@
     </div>
   <% end %>
 
+    <%= f.label :tag_id, "タグ" %>
+  <%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: "タグを選択してください" %>
+
   <div class="field">
     <%= form.label :title, "イベント名" %><br>
     <%= form.text_field :title %>

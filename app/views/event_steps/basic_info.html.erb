@@ -1,7 +1,9 @@
 <h2>新規イベント投稿</h2>
 <%= form_for @event, url: wizard_path do |f| %>
 <div class="basic_info">
-  <ul>
+ <ul>
+  <li class="all_form" ><%= f.label :tag_id ,"タグ"%><br></li>
+  <li class="all_form" ><%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: "タグを選択してください" %>
   <li class="all_form" ><%= f.label :title ,"イベントタイトル"%><br></li>
   <li class="all_form"><%= f.text_field :title ,class:"title_form",placeholder: "イベント名を入力してください"%><br></li>
   <li class="all_form"><%= f.label :description,"概要欄" %><br></li>

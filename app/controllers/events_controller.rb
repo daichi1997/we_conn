@@ -4,7 +4,12 @@ class EventsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
-    @events = Event.order(created_at: :desc).page(params[:page]).per(6)
+    @events = if params[:tag_id].present?
+      Event.where(tag_id: params[:tag_id])
+    else
+      Event.all
+    end
+    @events = @events.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
@@ -49,7 +54,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time, :location, :image)
+    params.require(:event).permit(:title, :description, :start_time, :location, :image,:tag_id)
   end
 
   def initialize_new_event

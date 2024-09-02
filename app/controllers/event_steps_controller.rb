@@ -17,7 +17,15 @@ class EventStepsController < ApplicationController
 
     case step
     when :image_upload
+      if params[:remove_image]
+        if @event.image.attached?
+          @event.image.purge
+          session[:event_attributes].delete('image') if session[:event_attributes]
+          redirect_to next_wizard_path and return
+            end  
+              else  
       handle_image_upload
+      end
     when :confirmation
       handle_confirmation
     else
@@ -28,7 +36,7 @@ class EventStepsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :image)
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :image,:tag_id)
   end
 
   def set_event

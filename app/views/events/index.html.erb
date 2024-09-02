@@ -1,6 +1,13 @@
 <div class="container mt-5">
   <h2 class="mb-4">イベント共有一覧</h2>
 
+  <div>
+  <%= link_to 'すべて', events_path %>
+  <% Tag.all.each do |tag| %>
+    <%= link_to tag.name, events_path(tag_id: tag.id) %>
+  <% end %>
+</div>
+
   <div class="d-flex flex-wrap">
     <% @events.each do |event| %>
       <div class="col-md-4 mb-4">
@@ -14,6 +21,7 @@
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to event.title, event_path(event),class:"title_text" %></h5>
+                <p>タグ: <%= event.tag.name %></p>
             <p class="card-text"><%= truncate(event.description, length: 100) %></p>
             <p class="card-text">
               <small class="text-muted">

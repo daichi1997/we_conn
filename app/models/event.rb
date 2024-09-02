@@ -1,9 +1,14 @@
 class Event < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :tag
+  belongs_to  :tag
   belongs_to :user
   has_one_attached :image
 
+
   validates :title, :description, presence: true, if: :validating_basic_info?
   validates :start_time, :location, presence: true, if: :validating_date_and_location?
+  validates :tag_id, presence: true
 
   attr_accessor :current_step
 
