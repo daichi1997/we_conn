@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
-
 
   def index
     @events = Event.order(created_at: :desc)
@@ -12,23 +11,9 @@ class EventsController < ApplicationController
   end
 
   def new
-    # default_tag = Tag.find_by(name: 'その他') || Tag.first
-    @event = current_user.events.build(
-      title: "",
-      description: "",
-      start_time: Time.current,
-      location: ""
-    )
-    
-    if @event.save(validate: false)
-      redirect_to event_event_step_path(@event, :basic_info)
-    else
-      # エラーハンドリング
-      flash[:alert] = "イベントの作成に失敗しました。"
-      redirect_to events_path
-    end
+    initialize_new_event
+    redirect_to new_event_step_path(:basic_info)
   end
-
 
   def edit
   end
@@ -54,14 +39,21 @@ class EventsController < ApplicationController
   def set_event
     @event = Event.find(params[:id])
   end
-    
+
   def check_owner
-    unless @event.user == current_user
-      redirect_to events_path, alert: 'このアクションの権限がありません。'
-    end
+    redirect_to events_path, alert: 'このアクションの権限がありません。' unless current_user_owns_event?
+  end
+
+  def current_user_owns_event?
+    @event.user == current_user
   end
 
   def event_params
     params.require(:event).permit(:title, :description, :start_time, :location, :image)
+  end
+
+  def initialize_new_event
+    @event = current_user.events.new
+    session[:event_attributes] = @event.attributes
   end
 end

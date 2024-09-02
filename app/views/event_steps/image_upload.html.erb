@@ -1,28 +1,28 @@
 <h2>画像アップロード（任意）</h2>
 <div class="image_form">
-<%= form_for @event, url: wizard_path, method: :put, html: { multipart: true } do |f| %>
-  <div class="form-group">
+<%= form_for @event, url: wizard_path, method: :patch, html: { multipart: true, data: { turbo: false } } do |f| %>  <div class="form-group">
     <ul>
         <li class="all_form"><%= f.label :image, "以下の「ファイルを選択」から画像を選択してください" %><br>
-        <li class="all_form"><%= f.file_field :image, class: 'form-control-file', onchange: 'this.form.submit();' %>
+        <li class="all_form"><%= f.file_field :image, class: 'form-control-file' %>
     </ul>   
   </div>
 
   <% if @event.image.attached? %>
-  <div class="event-image">
+  <div class="event-image mt-3">
     <%= image_tag @event.image.variant(resize_to_limit: [500, 300]), class: "img-fluid" %><br>
     <br>
-    <%= f.submit '画像を削除', name: 'remove_image', class: 'btn btn-danger' %>
+    <%= f.submit '画像を削除', name: 'remove_image', class: 'btn btn-danger mt-2' %>
   </div>
 <% end %>
 <br>
   <div class="form-group mt-3">
     <ul>
         <li class="all_form"><%= f.submit '画像をアップロードして次へ', class: 'btn btn-primary' %><br>
-        <li class="all_form"><%= f.submit '画像をアップロードせず次へ', name: 'skip_image', class: 'btn btn-secondary' %>
+        <li class="all_form"><%= f.submit '画像をアップロードせず次へ', name: 'skip_image', class: 'btn btn-secondary ml-2' %>
      </ul>   
   </div>
   </div>
 
 
 <% end %>
+</div>
