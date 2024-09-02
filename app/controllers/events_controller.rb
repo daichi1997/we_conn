@@ -4,10 +4,11 @@ class EventsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
+    @q = Event.ransack(params[:q])
     @events = if params[:tag_id].present?
-      Event.where(tag_id: params[:tag_id])
+      @q.result(distinct: true).where(tag_id: params[:tag_id])
     else
-      Event.all
+      @q.result(distinct: true)
     end
     @events = @events.order(created_at: :desc).page(params[:page]).per(6)
   end

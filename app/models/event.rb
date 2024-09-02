@@ -12,6 +12,14 @@ class Event < ApplicationRecord
 
   attr_accessor :current_step
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "description", "id", "location", "start_time", "tag_id", "title", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["user", "tag"]  
+  end
+
   def validating_basic_info?
     current_step == 'basic_info'
   end
