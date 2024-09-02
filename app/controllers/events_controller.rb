@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
-    @events = Event.order(created_at: :desc)
+    @events = Event.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show

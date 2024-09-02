@@ -311,6 +311,7 @@ text-align: right;
   width: 20vw;
   opacity: 80%;
   border: 1px solid black;
+  margin: 0 auto;
 }
 .card_title{
   text-decoration: none;
@@ -342,4 +343,31 @@ text-align: right;
 
 .card-title{
   text-align: center;
+}
+
+.pagination{
+  display: flex;
+  margin: 40px auto 40px;
+  font-size: 20px;
+  width: auto;
+  font-weight: bold;
+  background-color:lightgray;
+  border: 1px solid black;
+  height: 50px;
+  align-items: center;
+  color:yellow;
+}
+
+.page-link{
+  text-decoration: none;
+  margin-left: 10px;
+  border: 1px solid
+}
+
+.d-flex.flex-wrap{
+  text-align: center;
+}
+
+.mb-4{
+  margin-bottom: 40px;
 }
