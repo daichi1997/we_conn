@@ -25,11 +25,13 @@
   <% end %>
 </div>
 
-
+<div class="events-container">
   <div class="d-flex flex-wrap">
     <% @events.each do |event| %>
       <div class="col-md-4 mb-4">
         <div class="card">
+                    <p>いいね数: <span id="likes-count-<%= event.id %>"><%= event.likes.count %></span></p>
+
           <% if event.image.attached? %>
             <%= image_tag event.image.variant(resize: "300x200^", gravity: "center", crop: "300x200+0+0"), class: "card-img-top" %>
           <% else %>
@@ -37,6 +39,7 @@
               <span class="text-muted">No Image</span>
             </div>
           <% end %>
+
           <div class="card-body">            
             <h5 class="card-title"><%= link_to event.title, event_path(event),class:"title_text" %></h5>
                 <p>タグ: <%= event.tag.name %></p>
@@ -57,10 +60,12 @@
                 開催日: <%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>
               </small>
             </p>
+            
           </div>
         </div>
       </div>
     <% end %>
   </div>
+ </div> 
 <%= paginate @events %>
 </div>

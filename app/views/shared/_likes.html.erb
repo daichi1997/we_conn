@@ -1,6 +1,13 @@
-            <div id="like-btn<%= event.id %>">
-          <% if user_signed_in? && event.liked_by?(current_user)%>
-          <%=link_to "いいね済", event_like_path(event.id),  data: { turbo_method: :delete }, class: "tweet_likes" %>
-                <% else %>
-             <%=link_to "いいねする", event_likes_path(event.id), data: { turbo_method: :post }, class: "tweet_likes" %>
-                 <% end %>
+<div class="like-button">
+<div id="like-btn<%= @event.id %>">
+  <% if user_signed_in? %>
+    <% if @event.liked_by?(current_user) %>
+      <%= button_to "行きたい！済", event_like_path(@event), method: :delete, remote: true,class:"likebtn" %>
+    <% else %>
+      <%= button_to "行きたい！", event_likes_path(@event), method: :post, remote: true,class:"likebtn" %>
+    <% end %>
+  <% else %>
+    <%= link_to "行きたい！", "#",class:"likebtn" %>
+  <% end %>
+</div>
+</div>
