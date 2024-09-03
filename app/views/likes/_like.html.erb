@@ -1,11 +1,11 @@
 <%= turbo_frame_tag "like-btn-#{event.id}" do %>
   <% if user_signed_in? %>
     <% if event.liked_by?(current_user) %>
-      <%= button_to "いいね済", event_likes_path(event), method: :delete, class: "likebtn" %>
+      <%= button_to "取り消す", event_likes_path(event), method: :delete, class: "likebtn" %>
     <% else %>
-      <%= button_to "いいねする", event_likes_path(event), method: :post, class: "likebtn" %>
+      <%= button_to "行きたい！", event_likes_path(event), method: :post, class: "likebtn" %>
     <% end %>
   <% else %>
-    <%= link_to "いいねする", new_user_session_path, class: "likebtn" %>
+    <%= link_to "行きたい！", new_user_session_path, class: "likebtn" %>
   <% end %>
 <% end %>
