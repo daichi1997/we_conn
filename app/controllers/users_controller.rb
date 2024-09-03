@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
+    @name = @user.name
+    @events = @user.events
+
   end
 
   def edit

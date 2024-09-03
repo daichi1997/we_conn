@@ -183,11 +183,11 @@ h2{
 .usershow{
 
   background-color: lightgray;
-  width: 500px;
-  height: 100px;
-  margin-top: 10%;
-  margin-left: 400px;
+  width:40%;
+  height:fit-content;
+  margin: 50px auto;
   border-radius: 30px;
+  text-align: center;
 }
 
 .username{
@@ -202,7 +202,7 @@ h2{
   text-decoration: none;
   color: blue;
   font-weight: bold;
-margin:  42%;
+  margin:0 auto;
 }
 
 .d-flex.flex-wrap {
@@ -437,8 +437,6 @@ padding-top: 5px;
 .container{
   text-align: center;
   margin-top: 20px;
-  animation-duration: 2s;
-  animation-name: slidein;
 }
 
 .sendbtn{
@@ -446,17 +444,6 @@ padding-top: 5px;
   width: 50px;
 }
 
-@keyframes slidein {
-  from {
-    margin-left: 100%;
-    width: 20%;
-  }
-
-  to {
-    margin-left: 30%;
-    width: 20%;
-  }
-}
 
 .sendbtn:hover{
   color: blue;
@@ -467,12 +454,47 @@ padding-top: 5px;
 }
 
 .comments{
-  height: cover;
-  background-color: #ecf0f1;
+  max-width: 70vw;
+width: fit-content;
+background-color: white;
+opacity: 85%;
+background: linear-gradient(white ,gray);
+margin: 0 auto;
+padding-left: 20px;
+margin-top: 10px;
+}
+
+.comment_content{
+  background-color:rgb(154, 180, 190);
+  border: 1px solid black;
+  width: fit-content;
+  margin-top: 10px;
+  height: fit-content;
 }
 
 .comment_form{
   width: 400px;
   height: 70px;
   border-radius: 5px;
+}
+
+.comment_user{
+  text-decoration: none;
+}
+
+.eventbox{
+  background-color: skyblue;
+  padding-top: 15px;
+  border-radius: 0 0 30px 30px;
+
+}
+
+.userindex{
+  background-color: skyblue;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.bio{
 }

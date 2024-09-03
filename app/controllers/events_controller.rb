@@ -16,7 +16,6 @@ class EventsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @event.comments.includes(:user)
-
   end
 
   def new
@@ -58,7 +57,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time, :location, :image,:tag_id)
+    params.require(:event).permit(:title, :description, :start_time, :location, :image,:tag_id).merge(user_id: current_user.id)
   end
 
   def initialize_new_event

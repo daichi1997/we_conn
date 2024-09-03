@@ -10,10 +10,10 @@
         <div class="comments">
       <h4>＜コメント一覧＞</h4>
       <% @comments.each do |comment| %>
-        <p>
-          <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
-          <%= comment.content %>
-        </p>
+        <div class="comment_content">
+          <strong><%= link_to comment.user.name, "/users/#{comment.user_id}",class:"comment_user" %>：</strong>
+          <%= comment.content %><p><%= l comment.created_at %><p>
+        </div>
       <% end %>
     </div>
   </div>

@@ -1,7 +1,26 @@
 <div class="usershow">
 
   <div class="username"><%= @user.name %>さん</div>
-  <div class="bio"> <%= @user.bio %></div>
+  <div class="bio">＜profile＞
+    <p> <%= @user.bio %><p></div>
+
+  <div class="user_event">
+  <div class="userindex"><%= @name %>さんの投稿一覧</div>
+    <% @events.each do |event| %>
+   <div class="eventbox">
+    <div class="content_post" style="background-image: url(<%= event.image %>);">
+    <%= image_tag event.image.variant(resize: "240x160^", gravity: "center", crop: "240x160+0+0"), class: "card-img-top" %>
+    <P> <%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %></p>
+    <P>イベント名：<%= event.title %></p>
+    <P>概要：<%= event.description %></p>
+    <P>場所：<%= event.location %></p>
+    <P>タグ：<%= event.tag.name %></p>
+    </div>
+
+
+
+    <% end %>
+
 </div>
 <br>
 <br>
