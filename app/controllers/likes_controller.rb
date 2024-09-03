@@ -3,20 +3,24 @@ class LikesController < ApplicationController
   before_action :set_event
 
   def create
-    @like = current_user.likes.build(event: @event)
-    if @like.save
-      render json: { likes_count: @event.likes.count }
-    else
-      render json: { error: '失敗しました' }, status: :unprocessable_entity
+    return head :forbidden unless request.referer&.include?(event_path(@event))
+
+    like = current_user.likes.build(event: @event)
+    like.save
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @event }
     end
   end
 
   def destroy
-    @like = current_user.likes.find_by(event: @event)
-    if @like&.destroy
-      render json: { likes_count: @event.likes.count }
-    else
-      render json: { error: '取り消しに失敗しました' }, status: :unprocessable_entity
+    return head :forbidden unless request.referer&.include?(event_path(@event))
+
+    like = current_user.likes.find_by(event: @event)
+    like&.destroy
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @event }
     end
   end
 

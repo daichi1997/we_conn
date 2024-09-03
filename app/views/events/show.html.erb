@@ -19,8 +19,11 @@
   <% end %>
 </div>
 
-  <%= render 'shared/likes'%>
-
+ <div class="like-button">
+   <div id="like-btn<%= @event.id %>">
+    <%= render partial: "likes/like", locals: { event: @event } %>
+   </div>
+ </div>
 
 
 
