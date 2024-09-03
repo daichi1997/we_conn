@@ -403,3 +403,34 @@ text-align: right;
 .down-field{
   margin: 0 40px 0 0; 
 }
+
+.like-button{
+text-align: center;
+background-color:pink;
+border: 3px solid lightgreen;
+height: 50px;
+border-radius: 80% ;
+width: 150px;
+margin: 0 auto;
+padding-top: 25px;
+}
+
+.like-button:active{
+  transform: perspective(400px) translateZ(-40px);
+
+}
+
+
+.likebtn{
+  background-color: pink;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  border: none;
+}
+
+.likebtn:hover{
+  transform: translateY(-8px);
+
+}

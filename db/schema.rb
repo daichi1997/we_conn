@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_30_080309) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_02_114523) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_30_080309) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "likes", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_likes_on_event_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
@@ -67,4 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_30_080309) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "likes", "events"
+  add_foreign_key "likes", "users"
 end

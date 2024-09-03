@@ -19,6 +19,15 @@
   <% end %>
 </div>
 
+ <div class="like-button">
+   <div id="like-btn<%= @event.id %>">
+    <%= render partial: "likes/like", locals: { event: @event } %>
+   </div>
+ </div>
+
+
+
 <div class="redirect">
   <%= link_to 'イベント一覧ページに戻る', events_path, class: "redirect_btn" %>
 </div>
+
