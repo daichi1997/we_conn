@@ -417,7 +417,6 @@ padding-top: 5px;
 
 .like-button:active{
   transform: perspective(400px) translateZ(-40px);
-
 }
 
 
@@ -433,4 +432,47 @@ padding-top: 5px;
 .likebtn:hover{
   transform: translateY(-8px);
 
+}
+
+.container{
+  text-align: center;
+  margin-top: 20px;
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+
+.sendbtn{
+  margin: 0 auto;
+  width: 50px;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 20%;
+  }
+
+  to {
+    margin-left: 30%;
+    width: 20%;
+  }
+}
+
+.sendbtn:hover{
+  color: blue;
+}
+
+.sendbtn:active{
+  transform: perspective(400px) translateZ(-40px);
+}
+
+.comments{
+  height: cover;
+  background-color: #ecf0f1;
+}
+
+.comment_form{
+  width: 400px;
+  height: 70px;
+  border-radius: 5px;
 }

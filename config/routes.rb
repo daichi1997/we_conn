@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :event_steps, only: [:show, :update]
     resource :likes, only: [:create, :destroy]
+    resources :comments, only: [:create]
 
   end
   get 'events/new/event_steps/:id', to: 'event_steps#show', as: :new_event_step
