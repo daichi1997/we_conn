@@ -10,6 +10,7 @@ class LikesController < ApplicationController
     respond_to do |format|
       format.js
       format.html { redirect_to @event }
+
     end
   end
 

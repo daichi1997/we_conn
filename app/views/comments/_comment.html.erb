@@ -2,20 +2,12 @@
 <% if user_signed_in? && @event.liked_by?(current_user) %>
       <%= form_with(model: [@event, @comment], local: true) do |form| %>
         <%= form.text_area :content, placeholder: "コメントする", rows: "2",class:"comment_form" %>
-        <P><%= form.submit "送信" ,class:"sendbtn" %></p>
-      <% end %>
+     <P><%= form.submit "送信" ,class:"sendbtn" %>※要更新<P>
+            <% end %>
     <% elsif user_signed_in?%>
       <strong><p>※※※ 行きたいボタンを押すとコメントが投稿できます※※※</p></strong>
       <% else %>
       <strong><p>※※※ ログインをして"行きたいボタン"を押すとコメントが投稿できます※※※</p></strong>
     <% end %>
-        <div class="comments">
-      <h4>＜コメント一覧＞</h4>
-      <% @comments.each do |comment| %>
-        <div class="comment_content">
-          <strong><%= link_to comment.user.name, "/users/#{comment.user_id}",class:"comment_user" %>：</strong>
-          <%= comment.content %><p><%= l comment.created_at %><p>
-        </div>
-      <% end %>
-    </div>
+
   </div>
