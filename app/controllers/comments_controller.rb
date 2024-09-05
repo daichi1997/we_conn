@@ -4,10 +4,13 @@ class CommentsController < ApplicationController
 
 
   def create
-    comment = Comment.create(comment_params)
-    redirect_to "/event/#{comment.event.id}"
-
-  end
+    @comment = @event.comments.build(comment_params)
+    @comment.save
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @event }
+   end
+ end
   private
 
   def set_event

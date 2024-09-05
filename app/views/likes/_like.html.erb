@@ -2,6 +2,7 @@
   <% if user_signed_in? %>
     <% if event.liked_by?(current_user) %>
       <%= button_to "取り消す", event_likes_path(event), method: :delete, class: "likebtn" %>
+            <%= render 'comments/comment', event: event %>
     <% else %>
       <%= button_to "行きたい！", event_likes_path(event), method: :post, class: "likebtn" %>
     <% end %>
