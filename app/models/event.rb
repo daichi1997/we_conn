@@ -43,6 +43,7 @@ class Event < ApplicationRecord
   end
 
 
+
   private
 
   def image_type

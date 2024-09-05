@@ -19,11 +19,13 @@
   <% end %>
 </div>
 
+    <% if user_signed_in?  %>
  <div class="like-button">
    <div id="like-btn<%= @event.id %>">
     <%= render partial: "likes/like", locals: { event: @event } %>
    </div>
  </div>
+ <% end %>
 
     <%= render partial: "comments/comment"%>
 

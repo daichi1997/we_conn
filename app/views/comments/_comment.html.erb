@@ -1,11 +1,13 @@
   <div class="container">
-    <% if user_signed_in? %>
+<% if user_signed_in? && @event.liked_by?(current_user) %>
       <%= form_with(model: [@event, @comment], local: true) do |form| %>
         <%= form.text_area :content, placeholder: "コメントする", rows: "2",class:"comment_form" %>
         <P><%= form.submit "送信" ,class:"sendbtn" %></p>
       <% end %>
-    <% else %>
-      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% elsif user_signed_in?%>
+      <strong><p>※※※ 行きたいボタンを押すとコメントが投稿できます※※※</p></strong>
+      <% else %>
+      <strong><p>※※※ ログインをして"行きたいボタン"を押すとコメントが投稿できます※※※</p></strong>
     <% end %>
         <div class="comments">
       <h4>＜コメント一覧＞</h4>
