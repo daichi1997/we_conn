@@ -28,6 +28,21 @@
  </div>
  <% end %>
 
+     <% if user_signed_in? && current_user != comment.event.user %>
+     <%unless>
+
+      <strong><p>※※※ 行きたいボタンを押すとコメントが投稿できます※※※</p></strong>
+
+      <% elsif current_user != comment.event.user %>
+
+      <strong><p>※※※ ログインをして"行きたいボタン"を押すとコメントが投稿できます※※※</p></strong>
+
+      <% else %>
+
+          <%= render 'comments/like_button',comment:comment %>
+
+ 
+
   <div class="comments">
       <h4>＜コメント一覧＞</h4>
       <% @comments.each do |comment| %>
@@ -43,7 +58,12 @@
         </div>
       <% elsif current_user == comment.user && comment.liked_by_owner %>
         <!-- コメント投稿主で、かつイベント投稿主にいいねされた場合 -->
-        <p>マッチングしました</p>
+        <span class="blinking"><div class="matched-box">
+          <div class="matched">
+          matching!
+          </div>
+        </div>
+        </span>
       <% end %>
 
       <% if current_user == comment.user %>
