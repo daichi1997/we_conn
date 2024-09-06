@@ -568,3 +568,67 @@ margin-top: 10px;
     0% {opacity:0;}
     100% {opacity:1;}
 }
+
+.caution{
+  margin-top: 10px;
+}
+
+.matched-record{
+  text-decoration: none;
+  color:rgb(79, 23, 168);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.matched_record{
+  background-color:lightyellow;
+}
+
+.match-item{
+margin: 15px auto;
+border: 2px solid black;
+border-radius: 5px;
+
+
+}
+
+.table{
+  border-collapse: collapse;
+  margin-bottom: 32px;
+  width: 50%;
+}
+
+.table__col1{
+  text-align: left;
+  font-weight: bold;
+  background: #fafafa9c;
+  border-collapse: collapse;
+  border: 2px solid black;
+  width: 30%;
+  padding: 8px;
+}
+.table__col2{
+  text-align: left;
+  border: 2px solid black;
+  border-collapse: collapse;
+  width: 70%;
+  padding: 16px 8px;
+  background-color: #e5e9eba1;
+}
+
+.table__col2 a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.table__col2 a:hover {
+  text-decoration: underline;
+}
+
+.table__col2:hover {
+  background-color: #d1d5d7a1;
+}
+
+.table__col2 {
+  transition: background-color 0.3s ease;
+}

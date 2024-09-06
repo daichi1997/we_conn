@@ -1,6 +1,11 @@
 <div class="usershow">
 
   <div class="username"><%= @user.name %>さん</div>
+    <div class=matched_record>
+      <% if current_user == @user %>
+      <%= link_to 'マッチング履歴', matches_path ,class:"matched-record" %>
+      <% end %>
+    </div>
   <div class="bio">＜profile＞
     <p> <%= @user.bio %><p></div>
 
@@ -9,23 +14,25 @@
     <% @events.each do |event| %>
    <div class="eventbox">
   <div class="content_post">
+        <p>日時：<%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %></p>
+    <%= link_to event_path(event) do %>
         <% if event.image.attached? %>
     <%= image_tag event.image.variant(resize: "240x160^", gravity: "center", crop: "240x160+0+0"), class: "card-img-top" %>
     <% end %>
-    <p><%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %></p>
+        <% end %>
+
     <p>イベント名：<%= event.title %></p>
     <p>概要：<%= event.description %></p>
     <p>場所：<%= event.location %></p>
     <p>タグ：<%= event.tag.name %></p>
     </div>
-
     <% end %>
+
 
 </div>
 <br>
 <br>
 <% if current_user == @user %>
-
   <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'edit-profile-btn' %>
 <% end %>
 

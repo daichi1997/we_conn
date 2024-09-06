@@ -5,8 +5,7 @@
             <%= render 'comments/comment', event: event %>
     <% else %>
       <%= button_to "行きたい！", event_likes_path(event), method: :post, class: "likebtn" %>
+        <strong><p class="caution">※ 行きたいボタンを押すとコメントが<br>投稿できます※</p></strong> 
     <% end %>
-  <% else %>
-    <%= link_to "行きたい！", new_user_session_path, class: "likebtn" %>
   <% end %>
 <% end %>

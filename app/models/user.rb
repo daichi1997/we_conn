@@ -21,6 +21,15 @@ class User < ApplicationRecord
     result
   end
 
+  def matched_events
+    Event.joins(:comments)
+         .where(comments: { user_id: self.id, liked_by_owner: true })
+         .or(Event.where(user_id: self.id)
+                  .joins(:comments)
+                  .where(comments: { liked_by_owner: true }))
+         .distinct
+  end
+
   def password_required?
     new_record? || password.present? || password_confirmation.present?
   end

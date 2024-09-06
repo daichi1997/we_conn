@@ -1,0 +1,29 @@
+<h2><%= current_user.name %>さんのマッチング履歴</h2>
+
+<% @matched_events.each do |event| %>
+
+      <table class="match-item">
+        <tbody>
+          <tr>
+            <th class="table__col1">イベント名</th>
+            <td class="table__col2"> <%= link_to event.title, event_path(event)%></td>
+          </tr>
+          <tr>
+            <th class="table__col1">日時</th>
+            <td class="table__col2"><%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">場所</th>
+            <td class="table__col2"><%= event.location %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">イベント主</th>
+            <td class="table__col2"><%= event.user.name %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">マッチしたユーザー</th>
+            <td class="table__col2"><%= event.comments.where(liked_by_owner: true).map(&:user).uniq.map(&:name).join(', ') %></td>
+          </tr>
+        </tbody>
+      </table>
+<% end %>
