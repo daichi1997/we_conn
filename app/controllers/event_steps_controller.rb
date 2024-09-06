@@ -22,9 +22,9 @@ class EventStepsController < ApplicationController
           @event.image.purge
           session[:event_attributes].delete('image') if session[:event_attributes]
           redirect_to next_wizard_path and return
-            end  
-              else  
-      handle_image_upload
+        end
+      else
+        handle_image_upload
       end
     when :confirmation
       handle_confirmation
@@ -36,7 +36,7 @@ class EventStepsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :image,:tag_id)
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :image, :tag_id)
   end
 
   def set_event
@@ -50,10 +50,10 @@ class EventStepsController < ApplicationController
     @event.current_step = step.to_s
     set_default_values
   end
-  
+
   def attach_image_from_session
     return unless session[:image_blob_id]
-  
+
     blob = ActiveStorage::Blob.find_signed(session[:image_blob_id])
     @event.image.attach(blob) if blob
   end
@@ -76,11 +76,11 @@ class EventStepsController < ApplicationController
       )
       session[:image_blob_id] = blob.signed_id
     end
-    
+
     save_event_attributes
     redirect_to wizard_path(next_step, event_id: 'new')
   end
-  
+
   def save_event_attributes
     session[:event_attributes] = @event.attributes.except('image')
   end
@@ -89,17 +89,17 @@ class EventStepsController < ApplicationController
     @event.image.attach(params[:event][:image])
     if @event.image.attached?
       session[:image_blob_id] = @event.image.blob.signed_id
-      log_event_status("New image attached")
+      log_event_status('New image attached')
     else
-      log_error("Failed to attach new image")
-      @event.errors.add(:image, "画像の添付に失敗しました")
+      log_error('Failed to attach new image')
+      @event.errors.add(:image, '画像の添付に失敗しました')
     end
   end
 
   def remove_image
     @event.image.purge
     session.delete(:image_blob_id)
-    log_event_status("Image removed")
+    log_event_status('Image removed')
   end
 
   def handle_confirmation
@@ -111,29 +111,29 @@ class EventStepsController < ApplicationController
       render_wizard
     end
   end
-  
+
   def create_new_event
     @event.assign_attributes(event_params)
     if @event.save
       success_redirect('イベントが作成されました。')
     else
-      log_error("Failed to create new event")
+      log_error('Failed to create new event')
       render_wizard @event
     end
   end
-  
+
   def update_existing_event
     if @event.update(event_params)
       success_redirect('イベントが更新されました。')
     else
-      log_error("Failed to update existing event")
+      log_error('Failed to update existing event')
       render_wizard @event
     end
   end
-  
+
   def success_redirect(message)
     clear_session
-    log_event_status("Event confirmed and saved")
+    log_event_status('Event confirmed and saved')
     redirect_to events_path, notice: message
   end
 
@@ -142,7 +142,7 @@ class EventStepsController < ApplicationController
       save_event_attributes
       redirect_to wizard_path(next_step, event_id: 'new')
     else
-      log_error("Event invalid in default handling")
+      log_error('Event invalid in default handling')
       render_wizard @event
     end
   end
@@ -151,7 +151,7 @@ class EventStepsController < ApplicationController
     session.delete(:event_attributes)
     session.delete(:image_blob_id)
     session.delete(:event_id) # イベントIDも明示的に削除
-    log_event_status("Session cleared")
+    log_event_status('Session cleared')
   end
 
   def log_event_status(message)

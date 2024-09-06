@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def show
     @name = @user.name
     @events = @user.events
-
   end
 
   def edit

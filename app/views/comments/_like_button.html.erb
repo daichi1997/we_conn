@@ -1,0 +1,7 @@
+<div class="comment_like_button" id="comment_<%= comment.id %>_like_button">
+  <%= button_to comment.liked_by_owner ? 'いいね取り消し' : 'いいね', 
+                toggle_owner_like_comment_path(comment), 
+                method: :post,
+                data: { turbo_stream: true },
+                class: "comment_like-button" %>
+</div>

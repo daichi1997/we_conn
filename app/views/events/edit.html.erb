@@ -1,4 +1,4 @@
-<h1>イベントの編集</h1>
+<h2>イベントの編集</h2>
 
 <%= form_with(model: @event, local: true) do |form| %>
   <% if @event.errors.any? %>
@@ -12,8 +12,10 @@
     </div>
   <% end %>
 
-    <%= f.label :tag_id, "タグ" %>
-  <%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: "タグを選択してください" %>
+  <div class="field">
+    <%= form.label :tag_id, "タグ" %>
+  <%= form.collection_select :tag_id, Tag.all, :id, :name, prompt: "タグを選択してください" %>
+  </div>
 
   <div class="field">
     <%= form.label :title, "イベント名" %><br>
@@ -27,7 +29,7 @@
 
   <div class="field">
     <%= form.label :start_time, "日時" %><br>
-    <%= form.datetime_select :start_time %>
+    <%= form.datetime_select :start_time,use_month_numbers: true %>
   </div>
 
   <div class="field">

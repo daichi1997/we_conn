@@ -1,12 +1,11 @@
 class Event < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :tag
-  belongs_to  :tag
+  belongs_to :tag
   belongs_to :user
   has_one_attached :image
   has_many :likes
   has_many :comments, dependent: :destroy
-
 
   validates :title, :description, presence: true, if: :validating_basic_info?
   validates :start_time, :location, presence: true, if: :validating_date_and_location?
@@ -14,12 +13,12 @@ class Event < ApplicationRecord
 
   attr_accessor :current_step
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "description", "id", "location", "start_time", "tag_id", "title", "updated_at", "user_id"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[created_at description id location start_time tag_id title updated_at user_id]
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    ["user", "tag"]  
+  def self.ransackable_associations(_auth_object = nil)
+    %w[user tag]
   end
 
   def validating_basic_info?
@@ -41,8 +40,6 @@ class Event < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
-
-
 
   private
 

@@ -15,7 +15,4 @@ class Tag < ActiveHash::Base
   ]
   include ActiveHash::Associations
   has_many :events
-
 end
-
-

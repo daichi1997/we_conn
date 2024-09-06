@@ -464,6 +464,7 @@ background: linear-gradient(white ,gray);
 margin: 0 auto;
 padding-left: 20px;
 margin-top: 130px;
+
 }
 
 .comment_content{
@@ -472,6 +473,9 @@ margin-top: 130px;
   width: fit-content;
   margin-top: 10px;
   height: fit-content;
+  max-width: 70vw;
+  margin: 3px auto 3px;
+
 }
 
 .comment_form{
@@ -504,4 +508,28 @@ margin-top: 130px;
 
 .content_post{
   border-bottom: 10px solid lightgray;
+}
+
+.comment_delete{
+background-color: yellow;
+font-weight: 400;
+}
+
+.comment-delete{
+  text-align: right;
+}
+
+.comment_delete:hover{
+  transform: perspective(400px) translateZ(50px);
+
+}
+
+.comment_like_button{
+  text-align: right;
+}
+
+.comment_like-button{
+  font-weight: bold;
+  background-color: pink;
+  color:white;
 }

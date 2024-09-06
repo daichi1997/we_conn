@@ -4,10 +4,25 @@
         <%= form.text_area :content, placeholder: "コメントする", rows: "2",class:"comment_form" %>
      <P><%= form.submit "送信" ,class:"sendbtn" %>※要更新<P>
             <% end %>
-    <% elsif user_signed_in?%>
+
+                   <% if current_user == @event.user %>
+<div id="comment_<%= comment.id %>">
+  <p><%= comment.content %></p>
+  <div id="comment_<%= comment.id %>_like_button">
+    <%= render 'comments/like_button', comment: comment %>
+  </div>
+</div>
+
+    <% end %>
+
+            
+    <% elsif user_signed_in? && current_user != comment.event.user %>
       <strong><p>※※※ 行きたいボタンを押すとコメントが投稿できます※※※</p></strong>
-      <% else %>
+      <% elsif current_user != comment.event.user %>
       <strong><p>※※※ ログインをして"行きたいボタン"を押すとコメントが投稿できます※※※</p></strong>
+      <% else%>
+          <%= render 'comments/like_button',comment:comment %>
+
     <% end %>
 
   </div>

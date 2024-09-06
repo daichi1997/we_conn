@@ -6,10 +6,10 @@ class EventsController < ApplicationController
   def index
     @q = Event.ransack(params[:q])
     @events = if params[:tag_id].present?
-      @q.result(distinct: true).where(tag_id: params[:tag_id])
-    else
-      @q.result(distinct: true)
-    end
+                @q.result(distinct: true).where(tag_id: params[:tag_id])
+              else
+                @q.result(distinct: true)
+              end
     @events = @events.order(created_at: :desc).page(params[:page]).per(6)
   end
 
@@ -57,7 +57,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time, :location, :image,:tag_id).merge(user_id: current_user.id)
+    params.require(:event).permit(:title, :description, :start_time, :location, :image, :tag_id).merge(user_id: current_user.id)
   end
 
   def initialize_new_event
