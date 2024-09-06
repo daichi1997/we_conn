@@ -43,7 +43,7 @@
           <div class="card-body">            
             <h5 class="card-title"><%= link_to event.title, event_path(event),class:"title_text" %></h5>
                 <p>タグ: <%= event.tag.name %></p>
-            <p class="card-text"><%= truncate(event.description, length: 100) %></p>
+            <p class="card-text">概要：<%= truncate(event.description, length: 100) %></p>
             <p class="card-text">
               <small class="text-muted">
                 主催者: <%= link_to event.user.name, user_path(event.user) %>
