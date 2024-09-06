@@ -28,20 +28,9 @@
  </div>
  <% end %>
 
-     <% if user_signed_in? && current_user != comment.event.user %>
-     <%unless>
-
-      <strong><p>※※※ 行きたいボタンを押すとコメントが投稿できます※※※</p></strong>
-
-      <% elsif current_user != comment.event.user %>
-
+          <% unless user_signed_in? %>
       <strong><p>※※※ ログインをして"行きたいボタン"を押すとコメントが投稿できます※※※</p></strong>
-
-      <% else %>
-
-          <%= render 'comments/like_button',comment:comment %>
-
- 
+          <% end %> 
 
   <div class="comments">
       <h4>＜コメント一覧＞</h4>

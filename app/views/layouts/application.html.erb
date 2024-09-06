@@ -25,6 +25,8 @@
         <li><%= link_to 'イベント作成', new_event_step_path(:basic_info) %></li>
          <li><%= link_to current_user.name, user_path(current_user), class: "user-name" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %></li>
+         <li> <%= link_to 'マッチング履歴', matches_path %></li>
+
           <% else %>
             <li><%= link_to '新規登録', new_user_registration_path %></li>
             <li><%= link_to 'ログイン', new_user_session_path %></li>

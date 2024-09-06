@@ -568,3 +568,18 @@ margin-top: 10px;
     0% {opacity:0;}
     100% {opacity:1;}
 }
+
+.caution{
+  margin-top: 10px;
+}
+
+.matched-record{
+  text-decoration: none;
+  color:rgb(79, 23, 168);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.matched_record{
+  background-color:lightyellow;
+}

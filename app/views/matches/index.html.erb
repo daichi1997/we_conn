@@ -1,0 +1,14 @@
+<h1><%= current_user.name %>さんのマッチング履歴</h1>
+
+<% @matched_events.each do |event| %>
+  <div class="match-item">
+    <h2><%= link_to event.title, event_path(event) %></h2>
+    <p>日時: <%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %></p>
+    <p>場所: <%= event.location %></p>
+    <% if event.user == current_user %>
+      <p>マッチしたユーザー: <%= event.comments.where(liked_by_owner: true).map(&:user).map(&:name).join(', ') %></p>
+    <% else %>
+      <p>イベント主: <%= event.user.name %></p>
+    <% end %>
+  </div>
+<% end %>

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     post 'toggle_owner_like'
   end
  end
+ resources :matches, only: [:index]
+
+
 
   get 'events/new/event_steps/:id', to: 'event_steps#show', as: :new_event_step
   patch 'events/new/event_steps/:id', to: 'event_steps#update'
