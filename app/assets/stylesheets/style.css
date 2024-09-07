@@ -837,3 +837,17 @@ margin-top: 40px;
   color: rgb(216, 24, 24);
   font-weight: 600;
 }
+
+.alert {
+  position: fixed; /* 固定表示 */
+  top: 60px; /* 上からの距離 */
+  left: 50%; /* 中央に配置 */
+  transform: translateX(-50%); /* 中央に配置 */
+  background-color: orange; /* 背景色 */
+  color: #721c24; /* 文字色 */
+  border: 1px solid #f5c6cb; /* ボーダー */
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000; /* 他の要素の上に表示 */
+  transition: opacity 0.5s ease; /* フェードアウト効果 */
+}
