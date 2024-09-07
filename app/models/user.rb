@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :likes
   has_many :events
   has_many :comments, dependent: :destroy
+  has_many :chat_rooms
+
 
   validates :name, presence: true, length: { minimum: 2, maximum: 10 }
   validates :password, presence: true,
@@ -33,4 +35,6 @@ class User < ApplicationRecord
   def password_required?
     new_record? || password.present? || password_confirmation.present?
   end
+
+  
 end

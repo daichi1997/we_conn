@@ -43,7 +43,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_07_034028) do
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["event_id"], name: "index_chat_rooms_on_event_id"
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
   end
 
   create_table "comments", charset: "utf8", force: :cascade do |t|

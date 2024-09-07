@@ -1,9 +1,77 @@
-<h1>チャットルーム: <%= @event.title %></h1>
+<div class="wrapper">
+  <div class="side-bar">
+   <div class="side-bar-header">
+      <div class="header-name">
+         <%= link_to current_user.name, user_path(current_user),class:"header_name" %>
+  </div>
+  <div class="create-room">
+   good job :)<br>
+   Let's your Chat!
+  </div>
 
-<div id="messages" data-chat-room-id="<%= @chat_room.id %>">
-  <%= render @messages %>
 </div>
 
+<div class="rooms">
+
+  <% if current_user.events.any? %>
+    <% current_user.events.each do |event| %>
+      <% if event.chat_room %>
+        <%= link_to event_chat_room_path(event, event.chat_room), class: "room-link" do %>
+          <div class="room-item">
+            <div class="room-title"><%= event.title %></div>
+            <div class="room-last-message">
+              最新：<%= event.chat_room.messages.last&.content&.truncate(30) || "メッセージはありません" %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="room-item">
+          <div class="room-title"><%= event.title %> (チャットルームなし)</div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>参加しているイベントはありません。</p>
+  <% end %>
+    <div class="sorry">
+  ※<%= current_user.name %>様が投稿したイベントのマッチングによるチャットルームのみ表示されます。<br>
+  全て確認したい場合は"マッチング履歴"よりお願いいたします。※
+  </div>
+</div>
+   
+  
+     <%# ここまでサイド %>
+  </div>
+  <div class="chat">
+   <div class="chat-header">
+      <div class="left-header">
+    <div class="header-title">
+      イベント：<%= @event.title %>
+    </div>
+  </div>
+  <div class="right-header">
+
+   <%= link_to "Chat-Room",event_chat_room_path,class:"header-button" %>
+  </div>
+</div>
+<%# ここまでヘッダー %>
+<div class="messages">
+   <div class="message">
+    <div class="upper-message">
+       <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
+         <%= render @messages %>
+       </div>
+    </div>
+  </div>
+</div>
+
+<div class="form">
+   <div class="form-input">
 <div id="new_message">
   <%= render 'messages/form', chat_room: @chat_room, message: Message.new %>
+</div>
+</div>
+  </div>
+
+  </div>
 </div>

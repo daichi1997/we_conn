@@ -9,12 +9,17 @@ class MessagesController < ApplicationController
     if @message.save
       ActionCable.server.broadcast("chat_room_#{@chat_room.id}", { message: render_to_string(partial: 'messages/message', locals: { message: @message }) })
       respond_to do |format|
-        format.turbo_stream
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.append("messages", partial: "messages/message", locals: { message: @message }),
+          turbo_stream.replace("new_message_form", partial: "messages/form", locals: { chat_room: @chat_room, message: Message.new })
+        ]
+      end
         format.html { redirect_to event_chat_room_path(@chat_room.event, @chat_room) }
       end
     else
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('new_message', partial: 'messages/form', locals: { chat_room: @chat_room, message: @message }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('new_message_form', partial: 'messages/form', locals: { chat_room: @chat_room, message: @message }) }
         format.html { render 'chat_rooms/show', status: :unprocessable_entity }
       end
     end
