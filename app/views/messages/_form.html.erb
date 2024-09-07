@@ -1,0 +1,4 @@
+<%= form_with(model: [chat_room.event, chat_room, message], local: false) do |f| %>
+  <%= f.text_field :content, placeholder: "メッセージを入力" %>
+  <%= f.submit "送信" %>
+<% end %>

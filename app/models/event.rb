@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   has_one_attached :image
   has_many :likes
   has_many :comments, dependent: :destroy
+  has_one :chat_room
 
   validates :title, :description, presence: true, if: :validating_basic_info?
   validates :start_time, :location, presence: true, if: :validating_date_and_location?

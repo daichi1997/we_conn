@@ -1,0 +1,9 @@
+<h1>チャットルーム: <%= @event.title %></h1>
+
+<div id="messages" data-chat-room-id="<%= @chat_room.id %>">
+  <%= render @messages %>
+</div>
+
+<div id="new_message">
+  <%= render 'messages/form', chat_room: @chat_room, message: Message.new %>
+</div>

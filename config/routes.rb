@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :event_steps, only: [:show, :update]
     resource :likes, only: [:create, :destroy]
     resources :comments, only: [:create,:edit,:update,:destroy] 
+    resource :chat_room,only:[:show] do
+      resources :messages,only:[:create]
+    end
    end
   resources :comments do
   member do
