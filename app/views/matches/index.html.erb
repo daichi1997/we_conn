@@ -25,6 +25,10 @@
             <th class="table__col1">マッチしたユーザー</th>
             <td class="table__col2"><%= event.comments.where(liked_by_owner: true).map(&:user).uniq.map(&:name).join(', ') %></td>
           </tr>
+          <tr>
+            <th class="table__col1">チャットルーム</th>
+            <td class="table__col2"><%= link_to 'チャットルーム', event_chat_room_path(event) %></td>
+          </tr>
         </tbody>
       </table>
 <% end %>

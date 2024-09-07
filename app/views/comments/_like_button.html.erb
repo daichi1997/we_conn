@@ -4,4 +4,15 @@
                 method: :post,
                 data: { turbo_stream: true },
                 class: "comment_like-button" %>
+
+      <%= link_to event_chat_room_path(@event) do %>
+      <% if current_user == comment.event.user &&  comment.liked_by_owner %>
+        <span class="blinking"><div class="matched-box">
+          <div class="matched">
+          matching!
+          </div>
+        </div>
+        </span>
+        <% end %>
+        <% end %>
 </div>

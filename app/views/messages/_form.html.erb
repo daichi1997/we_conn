@@ -1,0 +1,6 @@
+<%= form_with(model: [chat_room.event, chat_room, message], local: false,id: "new_message_form") do |f| %>
+<div class="chatmessage-form">
+  <%= f.text_field :content, placeholder: "メッセージを入力",class:"form_field" %>
+  <%= f.submit "送信",class:"sousin-btn" %>
+</div>
+<% end %>

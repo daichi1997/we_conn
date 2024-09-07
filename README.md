@@ -90,13 +90,6 @@ We_conn
   belongs_to :user
   belongs_to :event
 
-## matchesテーブル
-
-| Column             | Type      | Options     |
-| ------------------ | ------    | ----------- |
-| user               | references| null: false, foreign_key: true |
-| matched_user       | references| null: false, foreign_key: true |
-| event              | references| null: false, foreign_key: true |
 
 ### Association
 
@@ -110,7 +103,7 @@ We_conn
 
 | Column             | Type      | Options     |
 | ------------------ | ------    | ----------- |
-| match              | references| null: false, foreign_key: true |
+| event              | references| null: false, foreign_key: true |
 
 ### Association
 
