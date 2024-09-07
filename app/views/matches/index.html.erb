@@ -1,5 +1,6 @@
 <h2><%= current_user.name %>さんのマッチング履歴</h2>
 
+<div class="matches-grid">
 <% @matched_events.each do |event| %>
 
       <table class="match-item">
@@ -27,3 +28,4 @@
         </tbody>
       </table>
 <% end %>
+</div>

@@ -587,7 +587,7 @@ margin-top: 10px;
 .match-item{
 margin: 15px auto;
 border: 2px solid black;
-border-radius: 5px;
+
 
 
 }
@@ -595,7 +595,7 @@ border-radius: 5px;
 .table{
   border-collapse: collapse;
   margin-bottom: 32px;
-  width: 50%;
+  width: 100%;
 }
 
 .table__col1{
@@ -631,4 +631,11 @@ border-radius: 5px;
 
 .table__col2 {
   transition: background-color 0.3s ease;
+}
+
+.matches-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
 }
