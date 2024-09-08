@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
  end
  resources :matches, only: [:index]
+ 
+  get 'preview_description', to: 'events#preview_description'
 
 
 

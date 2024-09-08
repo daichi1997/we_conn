@@ -89,3 +89,6 @@ gem 'active_hash'
 gem 'ransack'
 gem 'rails-i18n'
 gem "gretel"
+gem 'nokogiri'
+gem 'open-uri'
+gem 'rails_autolink'
