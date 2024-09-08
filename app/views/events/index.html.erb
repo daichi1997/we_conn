@@ -1,5 +1,7 @@
-    <h2 class="mb-4">イベント共有一覧</h2>
+<p><% breadcrumb :EventHome %></p>
 
+
+    <h2 class="mb-4">イベント共有一覧</h2>
   <div class="search_form">
   <%= search_form_for @q do |f| %>
   <div class="up-field">
@@ -18,10 +20,10 @@
 
 <div class="container mt-5">
 
-  <div class="tag-lists">
-  <%= link_to '● すべて', events_path ,class:"tag"%>
+<div class="tag-lists">
+  <%= link_to 'すべて', events_path, class: "tag #{'active' if params[:tag_id].nil?}" %>
   <% Tag.all.each do |tag| %>
-    <%= link_to "● #{tag.name}", events_path(tag_id: tag.id),class:"tag" %>
+    <%= link_to tag.name, events_path(tag_id: tag.id), class: "tag #{'active' if params[:tag_id].to_i == tag.id}" %>
   <% end %>
 </div>
 

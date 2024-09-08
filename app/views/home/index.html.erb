@@ -11,12 +11,15 @@
   </head>
 
   <body>
+
     <header>
-          <div class="heads">どこかに行きたい気持ちを繋ぐ。"Wanna go Event Connect"</div>
+          <div class="heads">Well come to the "WE Conn"</div>
     </header>
 
     <main class="main-content_home">
+      
           <div class="logo_home"> WE Conn</div>
+                    <div class="heads_2">"あのイベント気になるけど..."<br>そんなあなたの気持ちを繋ぐ。<br>"Wanna go Event Connect"</div>
                 <% if !user_signed_in? %>
             <li><%= link_to '新規登録', new_user_registration_path, class: "home_lists" %></li>
             <li><%= link_to 'ログイン', new_user_session_path, class: "home_lists"  %></li>
