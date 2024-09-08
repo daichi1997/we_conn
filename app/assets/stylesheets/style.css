@@ -323,6 +323,14 @@ h2{
   color: white;
 }
 
+.next_buttonUP{
+  width: 100px;
+  background-color: #3498db;
+  font-weight: 600;
+  color: white;
+  margin-top: 30px;
+}
+
 .all_form{
   margin-bottom: 30px;
 }
@@ -949,6 +957,11 @@ margin-top: 40px;
 
 .form-input {
   width: 100%;
+}
+
+.btn{
+  margin-top: 20px;
+
 }
 
 .form-message {

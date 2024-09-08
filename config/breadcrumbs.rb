@@ -52,9 +52,8 @@ crumb :ImageUpload do
 end
 
 crumb :Confirmation do
-  link "画像アップロード", new_event_step_path(:confirmation)
+  link "最終確認", new_event_step_path(:confirmation)
   parent :ImageUpload
 end
 
 
-# <% breadcrumb :ChatRoom %>
