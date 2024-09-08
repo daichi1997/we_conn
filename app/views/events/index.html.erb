@@ -31,7 +31,7 @@
   <div class="d-flex flex-wrap">
     <% @events.each do |event| %>
       <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card event-item">
                     <p>行きたい! :<span id="likes-count-<%= event.id %>"><%= event.likes.count %></span></p>
 
           <% if event.image.attached? %>
@@ -45,11 +45,12 @@
           <div class="card-body">            
             <h5 class="card-title"><%= link_to event.title, event_path(event),class:"title_text" %></h5>
                 <p>タグ: <%= event.tag.name %></p>
-            <p class="card-text">概要：<%= truncate(event.description, length: 100) %></p>
+            <p class="card-text">概要：<%= auto_link(truncate(event.description, length: 100), html: { target: '_blank' }) %></p>            
             <p class="card-text">
               <small class="text-muted">
                 主催者: <%= link_to event.user.name, user_path(event.user) %>
               </small>
+              </p>
 
               <p class="card-text">
               <small class="text-muted">
@@ -62,10 +63,48 @@
                 開催日: <%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>
               </small>
             </p>
+                  <div class="url-preview">
+        <input type="text" class="url-input" placeholder="URLを入力">
+        <button class="preview-btn">プレビュー</button>
+      </div>
+      <div class="preview-container"></div>
+    
+<script>
+document.addEventListener('turbo:load', function() {
+  document.querySelectorAll('.preview-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const urlInput = this.previousElementSibling;
+      const url = urlInput.value;
+      const previewContainer = this.closest('.event-item').querySelector('.preview-container');
+
+      if (!url) {
+        previewContainer.innerHTML = '<p>URLを入力してください。</p>';
+        return;
+      }
+
+      fetch(`/preview_description?url=${encodeURIComponent(url)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            previewContainer.innerHTML = `<p>エラー: ${data.error}</p>`;
+          } else {
+            previewContainer.innerHTML = `<p>プレビュー: ${data.description}</p>`;
+          }
+        })
+        .catch(error => {
+          console.error('エラー:', error);
+          previewContainer.innerHTML = '<p>説明の取得に失敗しました。</p>';
+        });
+    });
+  });
+});
+</script>
             
           </div>
         </div>
       </div>
+
+      
     <% end %>
   </div>
  </div> 

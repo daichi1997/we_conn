@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+require 'open-uri'
+require 'nokogiri'
+
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
@@ -41,6 +44,22 @@ class EventsController < ApplicationController
       redirect_to @event, alert: 'イベントの削除に失敗しました。'
     end
   end
+
+  def preview_description
+    url = params[:url]
+    begin
+      doc = Nokogiri::HTML(URI.open(url))
+      description = doc.at('meta[property="og:description"]')&.[]('content') || 
+                    doc.at('meta[name="description"]')&.[]('content') || 
+                    "説明が見つかりませんでした。"
+      
+      render json: { description: description }
+    rescue StandardError => e
+      render json: { error: e.message }, status: :unprocessable_entity
+    end
+  end
+
+
 
   private
 

@@ -3,7 +3,7 @@
 
 <div class="event-details">
  <ul>
-    <li class="all_form" >概要: <%= @event.description %>
+    <li class="all_form" >概要: <%= auto_link(@event.description, html: { target: '_blank' }) %>
     <li class="all_form" >日時: <%= @event.start_time.strftime("%Y-%m-%d %H:%M") %>
     <li class="all_form" >場所: <%= @event.location %>
   </ul>
