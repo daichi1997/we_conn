@@ -88,3 +88,4 @@ gem 'kaminari'
 gem 'active_hash'
 gem 'ransack'
 gem 'rails-i18n'
+gem "gretel"

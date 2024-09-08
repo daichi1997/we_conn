@@ -1,3 +1,4 @@
+<% breadcrumb :ImageUpload %>
 <h2>画像アップロード（任意）</h2>
 <div class="image_form">
 <%= form_for @event, url: wizard_path, method: :patch, html: { multipart: true, data: { turbo: false } } do |f| %>

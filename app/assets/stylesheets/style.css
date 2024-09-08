@@ -1,19 +1,28 @@
-header {
- background-color: #3498db;
- padding: 1rem;
- box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+.main-content {
+  flex: 1;
+  background-image: url('IMG_9265.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  opacity: 90%;
 }
 
-.heads{
-color: #ecf0f1;
-text-align: center;
+.main-content::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: rgba(255, 255, 255, 0.7); /* 白色の半透明オーバーレイ */
+ z-index: -1;
 }
-
-
 
 nav {
- display: flex;
- justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
  align-items: center;
  max-width: 1200px;
  margin: 0 auto;
@@ -41,21 +50,34 @@ nav {
  color: #ecf0f1;
 }
 
+/* HOME */
+
+header {
+ background-color: #3498db;
+ padding: 1rem;
+ box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.heads{
+  font-size: 2.5rem;
+color: #ecf0f1;
+text-align: center;
+}
+
+.heads_2{
+  font-size: 2rem;
+color: #ecf0f1;
+margin-left: 15%;
+background-color: rgba(84, 192, 241, 0.719);
+width: fit-content;
+}
+
 body {
  display: flex;
  flex-direction: column;
  min-height: 100vh;
 }
 
-.main-content {
- flex: 1;
- background-image: url('IMG_9265.jpg');
- background-size: cover;
- background-position: center;
- background-repeat: no-repeat;
- position: relative;
- opacity: 90%;
-}
 
 .main-content_home {
  flex: 1;
@@ -68,43 +90,50 @@ body {
 }
 
 
-.main-content::before {
- content: "";
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- background-color: rgba(255, 255, 255, 0.7); /* 白色の半透明オーバーレイ */
- z-index: -1;
-}
 
 .main-content_home > * {
- text-align: center;
+ text-align: left;
  list-style: none;
  justify-content: space-around;
  text-decoration: none;
  margin-top: 47px;
+ margin-bottom: 47px;
 
 }
 
-/* HOME */
 .logo_home{
- font-size: 3rem;
+  font-size: 7rem;
  font-weight: bold;
  color: orange;
- align-items: center;
  text-decoration: none;
+ margin-left: 15%;
 }
 
 .home_lists{
- font-size: 30px;
+ font-size: 2.5rem;
  text-decoration: none;
  color:orange;
  font-weight: bold;
-
+ margin-left: 15%;
+ text-align: left;
+ background-color: #16ffb1;
 }
 
+.home_lists:hover {
+  background-color: #1fdb9d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+
+
+/* HOME */
 /* フッタースタイル */
 footer {
  background-color: #34495e;
@@ -180,29 +209,96 @@ h2{
 
 /*ユーザー詳細*/
 
-.usershow{
-
-  background-color: lightgray;
-  width:40%;
-  height:fit-content;
+.usershow {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 600px;
   margin: 50px auto;
-  border-radius: 30px;
-  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.username{
+.username {
   text-align: center;
   font-weight: 600;
-  font-size: 20px;
-  background-color: orange;
-  border-radius: 30px 30px 0px 0px;
+  font-size: 24px;
+  background-color: #3498db;
+  color: white;
+  padding: 20px 0;
+  margin-bottom: 20px;
 }
 
-.edit-profile-btn{
+.bio {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.matched_record {
+  background-color: #e9f7ef;
+  padding: 15px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.matched-record {
   text-decoration: none;
-  color: blue;
+  color: #27ae60;
+  font-weight: 600;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.matched-record:hover {
+  color: #219653;
+}
+
+.user_event {
+  padding: 20px;
+}
+
+.userindex {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.eventbox {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.content_post p {
+  margin: 10px 0;
+  color: #34495e;
+}
+
+.content_post img {
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.edit-profile-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
   font-weight: bold;
-  margin:0 auto;
+  background-color: #3498db;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.edit-profile-btn:hover {
+  background-color: #2980b9;
 }
 
 .d-flex.flex-wrap {
@@ -348,23 +444,61 @@ color: violet;
   text-align: center;
 }
 
-.pagination{
+.pagination {
   display: flex;
-  margin: 40px auto 40px;
-  font-size: 20px;
-  width: auto;
-  font-weight: bold;
-  background-color:lightgray;
-  border: 1px solid black;
-  height: 50px;
+  justify-content: center;
   align-items: center;
-  color:yellow;
+  margin: 40px auto;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.page-link{
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 8px 16px;
+  color: #3498db;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
   text-decoration: none;
-  margin-left: 10px;
-  border: 1px solid
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.page-link:hover {
+  background-color: #3498db;
+  color: #ffffff;
+  border-color: #3498db;
+}
+
+.page-item.active .page-link {
+  background-color: #3498db;
+  color: #ffffff;
+  border-color: #3498db;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #ffffff;
+  border-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+  
+  .page-item {
+    margin: 5px;
+  }
 }
 
 .d-flex.flex-wrap{
@@ -375,23 +509,39 @@ color: violet;
   margin-bottom: 40px;
 }
 
-.tag-lists{
+.tag-lists {
   text-align: center;
-  background-color: white;
-  width: 85vw;
+  background-color: #f8f9fa;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto 40px;
-  height: 50px; 
-  padding-top: 25px;
+  padding: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.tag{
-  color:white;
+.tag {
+  display: inline-block;
+  color: #3498db;
   text-decoration: none;
-  padding: 0 20px;
-  border: 1px solid blue;
-  border-radius: 20px;
-  background-color: blue;
-  font-weight: 300;
+  padding: 8px 16px;
+  margin: 5px;
+  border: 2px solid #3498db;
+  border-radius: 30px;
+  background-color: white;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.tag:hover, .tag.active {
+  color: white;
+  background-color: #3498db;
+}
+
+.tag::before {
+  content: '#';
+  margin-right: 2px;
 }
 
 .search_form{
@@ -573,16 +723,7 @@ margin-top: 10px;
   margin-top: 10px;
 }
 
-.matched-record{
-  text-decoration: none;
-  color:rgb(79, 23, 168);
-  font-weight: 600;
-  font-size: 20px;
-}
 
-.matched_record{
-  background-color:lightyellow;
-}
 
 .match-item{
 margin: 15px auto;
@@ -850,4 +991,95 @@ margin-top: 40px;
   border-radius: 5px;
   z-index: 1000; /* 他の要素の上に表示 */
   transition: opacity 0.5s ease; /* フェードアウト効果 */
+}
+
+.alert:hover{
+  opacity: 0%;
+}
+.pan{
+  display: flex;
+}
+
+.edit-user-form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-user-form h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+.field input[type="text"],
+.field textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.field textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.actions input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+#error_explanation {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#error_explanation h2 {
+  color: #cc0033;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#error_explanation ul {
+  color: #cc0033;
+  padding-left: 20px;
+}
+
+#error_explanation li {
+  margin-bottom: 5px;
 }

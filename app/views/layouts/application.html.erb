@@ -36,11 +36,8 @@
     </header>
 
     <main class="main-content">
-
+   <%= breadcrumbs separator: " &rsaquo; " %>   
       <%= yield %>
-      <div class="redirect">
-  <%= link_to 'イベント一覧ページに戻る', events_path, class: "redirect_btn" %>
-</div>
 
     </main>
 

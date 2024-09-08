@@ -1,3 +1,4 @@
+<% breadcrumb :ChatRoom %>
 <div class="wrapper">
   <div class="side-bar">
    <div class="side-bar-header">
@@ -46,14 +47,17 @@
    <div class="chat-header">
       <div class="left-header">
     <div class="header-title">
+      
       イベント：<%= @event.title %>
     </div>
+    
   </div>
   <div class="right-header">
 
    <%= link_to "Chat-Room",event_chat_room_path,class:"header-button" %>
   </div>
 </div>
+
 <%# ここまでヘッダー %>
 <div class="messages">
    <div class="message">
