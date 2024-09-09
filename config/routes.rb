@@ -21,6 +21,10 @@ Rails.application.routes.draw do
  
   get 'preview_description', to: 'events#preview_description'
 
+  get '/privacy', to: 'static_pages#privacy'
+  get '/terms', to: 'static_pages#terms'
+  get '/callme', to: 'static_pages#callme'
+
 
 
   get 'events/new/event_steps/:id', to: 'event_steps#show', as: :new_event_step

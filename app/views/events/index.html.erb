@@ -13,9 +13,16 @@
   <%= f.search_field :description_cont,placeholder:"フリーワード検索" %>  <%= f.submit "🔍" %>
 </div>
   <br>
-
 <% end %>
   </div>
+
+<div class="date_search">
+  <%= form_tag events_path, method: :get do %>
+  <%= select_tag :month, options_from_collection_for_select(@months, :id, :name, params[:month]), prompt: '月を選択' %>
+  <%= select_tag :day, options_from_collection_for_select(@days, :id, :name, params[:day]), prompt: '日を選択' %>
+  <%= submit_tag '日付で検索' %>
+<% end %>
+</div>
 
 
 <div class="container mt-5">
@@ -37,7 +44,7 @@
           <% if event.image.attached? %>
             <%= image_tag event.image.variant(resize: "300x200^", gravity: "center", crop: "300x200+0+0"), class: "card-img-top" %>
           <% else %>
-            <div class="card-img-top d-flex align-items-center justify-content-center bg-light" style="height: 200px;">
+            <div class="card-img-none " style="height: 200px;">
               <span class="text-muted">No Image</span>
             </div>
           <% end %>
