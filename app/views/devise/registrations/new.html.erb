@@ -6,6 +6,12 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field_d">
+    <%= f.label :プロフィール画像 %>（任意）<br />
+    <%= f.file_field :avatar %>
+    </div>
+
+
+  <div class="field_d">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name",placeholder: "ニックネーム(2～10文字)" %>
   </div>

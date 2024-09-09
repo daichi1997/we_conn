@@ -1230,3 +1230,27 @@ margin-left: 15%;
   margin: 0 auto;
 background-color: rgba(211, 211, 211, 0.596);
 }
+
+.user-img_show{
+  border-radius: 50%;
+  background-position: center;
+  height: 70px;
+  width: 70px;
+  margin-right: 5px;
+}
+
+.user-img_index{
+  border-radius: 50%;
+  background-position: center;
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+}
+
+
+
+.user_icon_non{
+  font-size: 10px;
+  background-color: lightgray;
+  border-radius: 50%;
+}

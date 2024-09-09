@@ -6,7 +6,14 @@
 <% end %>
 <div class="usershow">
 
-  <div class="username"><%= @user.name %>さん</div>
+  <div class="username">
+    <% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar.variant(resize: "90x60^", gravity: "center", crop: "300x200+0+0"),class: "user-img_show" %>
+<% else %>
+<span class="user_icon_non">No Image</span>
+<% end %>
+    <%= @user.name %>さん
+    </div>
     <div class=matched_record>
       <% if current_user == @user %>
       <%= link_to 'マッチング履歴', matches_path ,class:"matched-record" %>

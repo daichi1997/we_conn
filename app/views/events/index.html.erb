@@ -54,8 +54,16 @@
                 <p>タグ: <%= event.tag.name %></p>
             <p class="card-text">概要：<%= auto_link(truncate(event.description, length: 100), html: { target: '_blank' }) %></p>            
             <p class="card-text">
+
               <small class="text-muted">
-                主催者: <%= link_to event.user.name, user_path(event.user) %>
+                主催者: 
+                    <% if event.user.avatar.attached? %>
+        <%= image_tag event.user.avatar.variant(resize: "50x50"), class: "user-img_index" %>
+      <% else %>
+              <span class="user_icon_non">No Image</span>
+      <% end %>  
+                
+                <%= link_to event.user.name, user_path(event.user) %>
               </small>
               </p>
 

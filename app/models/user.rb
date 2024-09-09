@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :events
   has_many :comments, dependent: :destroy
   has_many :chat_rooms
+  has_one_attached :avatar
 
 
   validates :name, presence: true, length: { minimum: 2, maximum: 10 }
