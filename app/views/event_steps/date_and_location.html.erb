@@ -1,4 +1,17 @@
 <% breadcrumb :DateLocation %>
+
+<% if session[:event_errors].present? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(session[:event_errors].count, "error") %> prohibited this event from being saved:</h2>
+    <ul>
+      <% session[:event_errors].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% session.delete(:event_errors) %>
+<% end %>
+
 <h2>日時と場所</h2>
 <div class="date_form">
 <%= form_for @event, url: wizard_path(step, event_id: (@event.new_record? ? 'new' : @event.id)), method: :patch do |f| %>

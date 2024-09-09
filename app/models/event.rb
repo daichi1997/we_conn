@@ -13,7 +13,7 @@ class Event < ApplicationRecord
 
   validates :title, :description, presence: true, if: :validating_basic_info?
   validates :start_time, :location, presence: true, if: :validating_date_and_location?
-  validates :tag_id, presence: true
+  validates :tag_id, presence: true, if: :validating_basic_info?
 
   attr_accessor :current_step
 
@@ -33,9 +33,6 @@ class Event < ApplicationRecord
     current_step == 'date_and_location'
   end
 
-  def validating_image_upload?
-    current_step == 'image_upload'
-  end
 
   def image_attached?
     image.attached?

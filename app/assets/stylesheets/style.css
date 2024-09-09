@@ -1254,3 +1254,21 @@ background-color: rgba(211, 211, 211, 0.596);
   background-color: lightgray;
   border-radius: 50%;
 }
+
+#error_explanation {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+#error_explanation h2 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+#error_explanation ul {
+  margin-bottom: 0;
+}

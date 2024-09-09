@@ -1,4 +1,17 @@
 <% breadcrumb :ImageUpload %>
+
+<% if session[:event_errors].present? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(session[:event_errors].count, "error") %> prohibited this event from being saved:</h2>
+    <ul>
+      <% session[:event_errors].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% session.delete(:event_errors) %>
+<% end %>
+
 <h2>画像アップロード</h2>
 <div class="image_form">
   <%= form_for @event, url: wizard_path, method: :patch, html: { multipart: true, data: { turbo: false } } do |f| %>
