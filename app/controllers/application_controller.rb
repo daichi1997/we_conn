@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_new_matches_count, if: :user_signed_in?
+
 
   protected
 
@@ -23,4 +25,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :bio])
   end
+
+  def set_new_matches_count
+    @new_matches_count = current_user.new_matches_count
+  end
+
 end

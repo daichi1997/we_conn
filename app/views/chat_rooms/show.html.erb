@@ -25,10 +25,6 @@
             </div>
           </div>
         <% end %>
-      <% else %>
-        <div class="room-item">
-          <div class="room-title"><%= event.title %> (チャットルームなし)</div>
-        </div>
       <% end %>
     <% end %>
   <% else %>
@@ -46,12 +42,20 @@
   <div class="chat">
    <div class="chat-header">
       <div class="left-header">
-    <div class="header-title">
-      
-      イベント：<%= @event.title %>
-    </div>
-    
-  </div>
+       <div class="header-title">
+       イベント：<%= @event.title %>
+       </div>
+      </div>
+        <div class="participants-list">
+          <h3>他メンバー</h3>
+          <ul>
+            <% @participants.each do |user| %>
+              <li><%= user.name %></li>
+            <% end %>
+          </ul>
+        </div>
+     
+
   <div class="right-header">
 
    <%= link_to "Chat-Room",event_chat_room_path,class:"header-button" %>

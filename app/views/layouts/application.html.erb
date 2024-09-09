@@ -26,7 +26,9 @@
          <li><%= link_to current_user.name, user_path(current_user), class: "user-name" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %></li>
          <li> <%= link_to 'マッチング履歴', matches_path %></li>
-
+             <% if @new_matches_count > 0 %>
+      <span class="notification-count">new match![ <%= @new_matches_count %> ]件</span>
+      <% end %>
           <% else %>
             <li><%= link_to '新規登録', new_user_registration_path %></li>
             <li><%= link_to 'ログイン', new_user_session_path %></li>

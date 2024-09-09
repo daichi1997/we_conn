@@ -36,5 +36,11 @@ class User < ApplicationRecord
     new_record? || password.present? || password_confirmation.present?
   end
 
+  def new_matches_count
+    last_check = last_matches_check_at || created_at
+    matched_events.where('events.created_at > ?', last_check).count
+  end
+
+
   
 end

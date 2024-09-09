@@ -1,4 +1,9 @@
 <% breadcrumb :UserShow %>
+<% if current_user == @user %>
+<div class= show_edit>
+  <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'edit-profile-btn' %>
+<div>
+<% end %>
 <div class="usershow">
 
   <div class="username"><%= @user.name %>さん</div>
@@ -8,14 +13,16 @@
       <% end %>
     </div>
   <div class="bio">＜profile＞
-    <p> <%= @user.bio %><p></div>
+    <p> <%= @user.bio %><p>
+      
+    </div>
 
   <div class="user_event">
   <div class="userindex"><%= @name %>さんの投稿一覧</div>
     <% @events.each do |event| %>
    <div class="eventbox">
   <div class="content_post">
-        <p>日時：<%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %></p>
+        <p>開催日：<%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %></p>
     <%= link_to event_path(event) do %>
         <% if event.image.attached? %>
     <%= image_tag event.image.variant(resize: "240x160^", gravity: "center", crop: "240x160+0+0"), class: "card-img-top" %>
@@ -33,7 +40,5 @@
 </div>
 <br>
 <br>
-<% if current_user == @user %>
-  <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'edit-profile-btn' %>
-<% end %>
+
 

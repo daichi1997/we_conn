@@ -2,11 +2,12 @@ class Event < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :tag
   belongs_to :tag
-  belongs_to :user
+  belongs_to :user, optional: true  
+
   has_one_attached :image
   has_many :likes
   has_many :comments, dependent: :destroy
-  has_one :chat_room
+  has_one :chat_room,dependent: :destroy
 
   validates :title, :description, presence: true, if: :validating_basic_info?
   validates :start_time, :location, presence: true, if: :validating_date_and_location?
