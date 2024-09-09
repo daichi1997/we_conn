@@ -5,12 +5,11 @@ class Event < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to_active_hash :month
   belongs_to_active_hash :day
-  
 
   has_one_attached :image
   has_many :likes
   has_many :comments, dependent: :destroy
-  has_one :chat_room,dependent: :destroy
+  has_one :chat_room, dependent: :destroy
 
   validates :title, :description, presence: true, if: :validating_basic_info?
   validates :start_time, :location, presence: true, if: :validating_date_and_location?
@@ -46,13 +45,21 @@ class Event < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
-  scope :by_month_and_day, ->(month, day) {
-    where("EXTRACT(MONTH FROM DATE(start_time)) = ? AND EXTRACT(DAY FROM DATE(start_time)) = ?", month, day)
+  scope :by_month_and_day, lambda { |month, day|
+    where('EXTRACT(MONTH FROM DATE(start_time)) = ? AND EXTRACT(DAY FROM DATE(start_time)) = ?', month, day)
   }
+
+  scope :with_details, -> { includes(:user, image_attachment: :blob) }
+
+  scope :with_image, -> { includes(image_attachment: :blob) }
 
   # 日付のみを返すメソッド
   def start_date
     start_time.to_date
+  end
+
+  def likes_count
+    self[:likes_count] || likes.count
   end
 
   private

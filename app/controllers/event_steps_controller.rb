@@ -20,7 +20,7 @@ class EventStepsController < ApplicationController
       if params[:remove_image]
         if @event.image.attached?
           @event.image.purge
-          session[:event_attributes].delete('image') if session[:event_attributes]
+          session[:event_attributes]&.delete('image')
           redirect_to next_wizard_path and return
         end
       else

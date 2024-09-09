@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :chat_rooms
   has_one_attached :avatar
 
-
   validates :name, presence: true, length: { minimum: 2, maximum: 10 }
   validates :password, presence: true,
                        length: { minimum: 6, message: 'は6文字以上で入力してください' },
@@ -26,8 +25,8 @@ class User < ApplicationRecord
 
   def matched_events
     Event.joins(:comments)
-         .where(comments: { user_id: self.id, liked_by_owner: true })
-         .or(Event.where(user_id: self.id)
+         .where(comments: { user_id: id, liked_by_owner: true })
+         .or(Event.where(user_id: id)
                   .joins(:comments)
                   .where(comments: { liked_by_owner: true }))
          .distinct
@@ -42,6 +41,7 @@ class User < ApplicationRecord
     matched_events.where('events.created_at > ?', last_check).count
   end
 
-
-  
+  def matched_events_with_details
+    matched_events.includes(:user, :chat_room).order(created_at: :desc)
+  end
 end

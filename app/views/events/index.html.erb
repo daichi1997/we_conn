@@ -39,7 +39,7 @@
     <% @events.each do |event| %>
       <div class="col-md-4 mb-4">
         <div class="card event-item">
-                    <p>行きたい! :<span id="likes-count-<%= event.id %>"><%= event.likes.count %></span></p>
+                    <p>行きたい! :<span id="likes-count-<%= event.id %>"><%= event.likes_count %></span></p>
 
           <% if event.image.attached? %>
             <%= image_tag event.image.variant(resize: "300x200^", gravity: "center", crop: "300x200+0+0"), class: "card-img-top" %>

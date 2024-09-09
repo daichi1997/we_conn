@@ -7,7 +7,6 @@ class ChatRoomsController < ApplicationController
     @messages = @chat_room.messages.includes(:user)
     @message = Message.new
     @participants = @event.comments.where(liked_by_owner: true).map(&:user).uniq
-
   end
 
   private
