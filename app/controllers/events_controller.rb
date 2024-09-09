@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-require 'open-uri'
-require 'nokogiri'
+  require 'open-uri'
+  require 'nokogiri'
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
@@ -10,7 +10,9 @@ require 'nokogiri'
     @months = Month.all
     @days = Day.all
 
-    @q = Event.ransack(params[:q])
+    @q = Event.includes(user: { avatar_attachment: :blob }, image_attachment: :blob).ransack(params[:q])
+    # userとavatar_attachmentを含めています
+
     @events = if params[:tag_id].present?
                 @q.result(distinct: true).where(tag_id: params[:tag_id])
               else
@@ -18,13 +20,10 @@ require 'nokogiri'
               end
 
     # 月日での絞り込み
-    if params[:month].present? && params[:day].present?
-      @events = @events.by_month_and_day(params[:month], params[:day])
-    end
+    @events = @events.by_month_and_day(params[:month], params[:day]) if params[:month].present? && params[:day].present?
 
     @events = @events.order(created_at: :desc).page(params[:page]).per(6)
   end
-
 
   def show
     @comment = Comment.new
@@ -59,17 +58,15 @@ require 'nokogiri'
     url = params[:url]
     begin
       doc = Nokogiri::HTML(URI.open(url))
-      description = doc.at('meta[property="og:description"]')&.[]('content') || 
-                    doc.at('meta[name="description"]')&.[]('content') || 
-                    "説明が見つかりませんでした。"
-      
-      render json: { description: description }
+      description = doc.at('meta[property="og:description"]')&.[]('content') ||
+                    doc.at('meta[name="description"]')&.[]('content') ||
+                    '説明が見つかりませんでした。'
+
+      render json: { description: }
     rescue StandardError => e
       render json: { error: e.message }, status: :unprocessable_entity
     end
   end
-
-
 
   private
 

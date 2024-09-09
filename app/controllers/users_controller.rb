@@ -4,7 +4,10 @@ class UsersController < ApplicationController
 
   def show
     @name = @user.name
-    @events = @user.events
+    @events = @user.events.with_image
+                   .order(created_at: :desc)
+                   .page(params[:page])
+                   .per(10)
   end
 
   def edit
@@ -43,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :bio, :password, :password_confirmation,:avatar)
+    params.require(:user).permit(:name, :bio, :password, :password_confirmation, :avatar)
   end
 
   def needs_password?(_user, params)
