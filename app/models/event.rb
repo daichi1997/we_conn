@@ -2,7 +2,10 @@ class Event < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :tag
   belongs_to :tag
-  belongs_to :user, optional: true  
+  belongs_to :user, optional: true
+  belongs_to_active_hash :month
+  belongs_to_active_hash :day
+  
 
   has_one_attached :image
   has_many :likes
@@ -41,6 +44,15 @@ class Event < ApplicationRecord
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
+  end
+
+  scope :by_month_and_day, ->(month, day) {
+    where("EXTRACT(MONTH FROM DATE(start_time)) = ? AND EXTRACT(DAY FROM DATE(start_time)) = ?", month, day)
+  }
+
+  # 日付のみを返すメソッド
+  def start_date
+    start_time.to_date
   end
 
   private

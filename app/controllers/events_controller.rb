@@ -7,14 +7,24 @@ require 'nokogiri'
   before_action :check_owner, only: [:edit, :update, :destroy]
 
   def index
+    @months = Month.all
+    @days = Day.all
+
     @q = Event.ransack(params[:q])
     @events = if params[:tag_id].present?
                 @q.result(distinct: true).where(tag_id: params[:tag_id])
               else
                 @q.result(distinct: true)
               end
+
+    # 月日での絞り込み
+    if params[:month].present? && params[:day].present?
+      @events = @events.by_month_and_day(params[:month], params[:day])
+    end
+
     @events = @events.order(created_at: :desc).page(params[:page]).per(6)
   end
+
 
   def show
     @comment = Comment.new

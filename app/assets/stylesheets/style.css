@@ -192,7 +192,7 @@ h2{
  font-size: 30px;
 }
 
-.field{
+.field_d{
  text-align: center;
  margin-top: 20px;
 }
@@ -1198,4 +1198,35 @@ margin-top: 40px;
  margin-right: 5px; 
  font-size: 18px;
  font-weight: bold;
+}
+
+.date_search{
+  text-align: right;
+  margin-right: 20px;
+}
+
+.static_back{
+  background-color: rgba(241, 241, 241, 0.616);
+  width: 70%;
+  margin: 5% auto 15%;
+  height: fit-content;
+  padding: 5%;
+  color: rgb(34, 32, 32);
+  border-radius: 10%;
+  font-size: 17px;
+}
+
+.callme{
+font-size:30px ;  
+margin-left: 15%;
+}
+
+.card-img-none{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 300px;
+  margin: 0 auto;
+background-color: rgba(211, 211, 211, 0.596);
 }
