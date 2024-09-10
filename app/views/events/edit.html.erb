@@ -13,32 +13,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field_e">
     <%= form.label :tag_id, "タグ" %>
   <%= form.collection_select :tag_id, Tag.all, :id, :name, prompt: "タグを選択してください" %>
   </div>
 
-  <div class="field">
+  <div class="field_e">
     <%= form.label :title, "イベント名" %><br>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
+  <div class="field_e">
     <%= form.label :description, "概要欄" %><br>
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
+  <div class="field_e">
     <%= form.label :start_time, "日時" %><br>
     <%= form.datetime_select :start_time,use_month_numbers: true %>
   </div>
 
-  <div class="field">
+  <div class="field_e">
     <%= form.label :location, "場所" %><br>
     <%= form.text_field :location %>
   </div>
 
-  <div class="field">
+  <div class="field_e">
     <%= form.label :image, "画像" %><br>
         <% if @event.image.attached? %>
       <div class="current-image">

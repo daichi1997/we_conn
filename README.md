@@ -145,8 +145,11 @@ password:    aaa111        |
   belongs_to :user
   belongs_to :chat_room
 
+## ER図
 
 ## 画面遷移図
+
+
 
 ## 開発環境
 ・フロントエンド
