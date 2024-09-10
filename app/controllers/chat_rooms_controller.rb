@@ -1,30 +1,27 @@
 class ChatRoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_event
   before_action :authorize_chat_room_access, only: [:show]
 
   def show
     @chat_room = @event.chat_room || @event.create_chat_room!(user: current_user)
     @messages = @chat_room.messages.includes(:user)
     @message = Message.new
-    @participants = @event.comments.where(liked_by_owner: true).map(&:user).uniq
+    @participants = @event.participants
   end
 
   private
 
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
+
   def authorize_chat_room_access
-    if params[:id].blank?
-      flash[:alert] = "チャットルームが指定されていません。"
-      redirect_to events_path and return
-    end
-  
-    @chat_room = ChatRoom.find_by(id: params[:id])
+    Rails.logger.debug "Event ID: #{@event.id}"
+    Rails.logger.debug "Current user ID: #{current_user.id}"
+    Rails.logger.debug "Participants: #{@event.participants.map(&:id)}"
     
-    if @chat_room.nil?
-      flash[:alert] = "指定されたチャットルームは存在しません。"
-      redirect_to events_path and return
-    end
-  
-    unless @chat_room.users.include?(current_user)
+    unless @event.participants.include?(current_user)
       flash[:alert] = "このチャットルームにアクセスする権限がありません。"
       redirect_to events_path
     end
