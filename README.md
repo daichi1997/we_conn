@@ -38,9 +38,8 @@ We_conn
   has_many :events
   has_many :likes
   has_many :comments
-  has_many :matches
-  has_many :messages
-  has_many :reviews
+  has_many :chat_rooms
+  has_many :avatar
 
 ## eventsテーブル
 
@@ -57,10 +56,7 @@ We_conn
   belongs_to :user
   has_many :likes
   has_many :comments
-  has_many :matches
-  has_many :reviews
   has_one_attached :image
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :tag
 
 
@@ -91,13 +87,6 @@ We_conn
   belongs_to :event
 
 
-### Association
-
-  belongs_to :user
-  belongs_to :matched_user, class_name: 'User'
-  belongs_to :event
-  has_one :chat_room
-
 
 ## chat_roomsテーブル
 
@@ -107,8 +96,10 @@ We_conn
 
 ### Association
 
-  belongs_to :match
+  belongs_to :event
   has_many :messages
+  belongs_to :user
+
 
 ## messagesテーブル
 
@@ -123,21 +114,6 @@ We_conn
 
   belongs_to :user
   belongs_to :chat_room
-
-## reviewsテーブル
-
-| Column             | Type      | Options     |
-| ------------------ | ------    | ----------- |
-| content            | text      | null: false,|
-| rating             | integer   | null: false,|
-| user               | references| null: false, foreign_key: true |
-| event              | references| null: false, foreign_key: true |
-
-### Association
-
-
-  belongs_to :user
-  belongs_to :event
 
 
 ## 画面遷移図
