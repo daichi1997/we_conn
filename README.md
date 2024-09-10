@@ -39,7 +39,7 @@ We_conn
   has_many :likes
   has_many :comments
   has_many :chat_rooms
-  has_many :avatar
+  has_one_attached :avatar
 
 ## eventsテーブル
 
