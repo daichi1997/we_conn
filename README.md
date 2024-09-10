@@ -68,7 +68,7 @@ passwarod: 2222
  
   
  # データベース設計  
-![32520746ffc64fd799ae9fe2bfebe1b0](https://github.com/user-attachments/assets/43dbc5aa-6825-47c4-8f21-8fe21877b82f)
+![we_conn](https://github.com/user-attachments/assets/bd8cfe70-b93b-48a3-a12f-f4dcd901b61b)
 
 ## usersテーブル
 
@@ -163,8 +163,8 @@ passwarod: 2222
 
 
 ## 画面遷移図
+![webtree](https://github.com/user-attachments/assets/f3a959c6-d3e0-4938-bb52-a3e1690d8850)
 
-\\wsl.localhost\Ubuntu\home\daichi\projects\we_conn\webtree.dio
 
 ## 開発環境
 ・フロントエンド
