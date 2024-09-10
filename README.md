@@ -14,11 +14,11 @@ We_conn
 ### テスト用アカウント
 mail_address: test@test.com <br>
 
-password:    aaa111        |
+password:    aaa111        
   
 ### basic認証
-| id | admin | <br>
-| passwarod | 2222 |
+id:        admin  <br>
+passwarod: 2222 
 
 ### 利用方法
 ゲストユーザー：イベントの一覧ページ、詳細ページの閲覧、ユーザー詳細ページの閲覧のみ。
