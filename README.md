@@ -60,10 +60,15 @@ passwarod: 2222
 また、直近で予定が何に見ない日などに時間を持て余すのがいやだなと思ったときにここから面白そうなイベントを見つけて参加できるかもしれない。というのは面白そうとおもってマッチング形式にしました。
 
 ### 実装機能の画像やGIF<br>
+  ![readme用](https://github.com/user-attachments/assets/145a9b16-8d8a-4a75-92e3-3b0012c5d61e)
+
   
+![d1c473db0f80a8db5086c89d8c13c578](https://github.com/user-attachments/assets/a5759049-e0e8-42eb-8e27-bfa0b4a2873b)
+
  
   
  # データベース設計  
+![32520746ffc64fd799ae9fe2bfebe1b0](https://github.com/user-attachments/assets/43dbc5aa-6825-47c4-8f21-8fe21877b82f)
 
 ## usersテーブル
 
