@@ -161,11 +161,10 @@ passwarod: 2222
   belongs_to :user
   belongs_to :chat_room
 
-## ER図
 
 ## 画面遷移図
 
-
+\\wsl.localhost\Ubuntu\home\daichi\projects\we_conn\webtree.dio
 
 ## 開発環境
 ・フロントエンド
