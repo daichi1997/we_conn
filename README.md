@@ -60,10 +60,15 @@ passwarod: 2222
 また、直近で予定が何に見ない日などに時間を持て余すのがいやだなと思ったときにここから面白そうなイベントを見つけて参加できるかもしれない。というのは面白そうとおもってマッチング形式にしました。
 
 ### 実装機能の画像やGIF<br>
+  ![readme用](https://github.com/user-attachments/assets/145a9b16-8d8a-4a75-92e3-3b0012c5d61e)
+
   
+![d1c473db0f80a8db5086c89d8c13c578](https://github.com/user-attachments/assets/a5759049-e0e8-42eb-8e27-bfa0b4a2873b)
+
  
   
  # データベース設計  
+![we_conn](https://github.com/user-attachments/assets/bd8cfe70-b93b-48a3-a12f-f4dcd901b61b)
 
 ## usersテーブル
 
@@ -156,10 +161,9 @@ passwarod: 2222
   belongs_to :user
   belongs_to :chat_room
 
-## ER図
 
 ## 画面遷移図
-
+![webtree](https://github.com/user-attachments/assets/f3a959c6-d3e0-4938-bb52-a3e1690d8850)
 
 
 ## 開発環境
