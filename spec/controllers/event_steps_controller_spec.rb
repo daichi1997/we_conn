@@ -30,7 +30,7 @@ RSpec.describe EventStepsController, type: :controller do
 
     context 'when in image_upload step' do
       it 'proceeds to next step without image' do
-        put :update, params: { id: 'image_upload', event: { } }
+        put :update, params: { id: 'image_upload', event: {} }
         expect(response).to redirect_to(wizard_path('confirmation'))
       end
     end

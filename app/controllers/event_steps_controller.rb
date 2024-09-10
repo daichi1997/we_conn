@@ -4,11 +4,15 @@ class EventStepsController < ApplicationController
   before_action :set_event
   before_action :check_session_data, only: [:show]
 
-
   steps :basic_info, :date_and_location, :image_upload, :confirmation
 
   def show
     @event.current_step = step.to_s
+    if step == :basic_info
+      clear_session_data # 基本情報ステップで新しいセッションを開始
+      @event = current_user.events.new
+
+    end
     jump_to(:basic_info) if step == :confirmation && params[:editing]
     render_wizard
   end
@@ -16,7 +20,7 @@ class EventStepsController < ApplicationController
   def update
     @event.attributes = event_params if params[:event].present?
     @event.current_step = step.to_s
-  
+
     case step
     when :image_upload
       if params[:remove_image]
@@ -40,10 +44,10 @@ class EventStepsController < ApplicationController
       handle_default
     end
   rescue ActiveRecord::NotNullViolation
-    flash[:alert] = "必要な情報が不足しています。最初からやり直してください。"
+    flash[:alert] = '必要な情報が不足しています。最初からやり直してください。'
     redirect_to new_event_path
   end
-  
+
   private
 
   def event_params
@@ -78,11 +82,10 @@ class EventStepsController < ApplicationController
     events_path
   end
 
-  
   def save_event_attributes
     session[:event_attributes] = @event.attributes.except('image')
   end
-  
+
   def attach_new_image
     @event.image.attach(params[:event][:image])
     if @event.image.attached?
@@ -100,7 +103,6 @@ class EventStepsController < ApplicationController
     log_event_status('Image removed')
   end
 
-  
   def create_new_event
     @event.assign_attributes(event_params)
     if @event.save
@@ -135,18 +137,18 @@ class EventStepsController < ApplicationController
       render_wizard @event
     end
   end
-  
+
   def clear_session
     session.delete(:event_attributes)
     session.delete(:image_blob_id)
     session.delete(:event_id) # イベントIDも明示的に削除
     log_event_status('Session cleared')
   end
-  
+
   def log_event_status(message)
     Rails.logger.info("#{message} - Event ID: #{@event.id}, New Record: #{@event.new_record?}, Step: #{@event.current_step}, Image attached: #{@event.image.attached?}, Attributes: #{@event.attributes}, Session: #{session.to_h}")
   end
-  
+
   def log_error(message)
     Rails.logger.error("#{message} - Event ID: #{@event.id}, Step: #{@event.current_step}, Errors: #{@event.errors.full_messages}")
   end
@@ -170,9 +172,10 @@ class EventStepsController < ApplicationController
       redirect_to wizard_path(:date_and_location)
     end
   end
-  
+
   def handle_image_upload
     if params[:event] && params[:event][:image]
+      @event.image.purge if @event.image.attached? # 既存の画像を削除
       blob = ActiveStorage::Blob.create_and_upload!(
         io: params[:event][:image].open,
         filename: params[:event][:image].original_filename,
@@ -182,22 +185,21 @@ class EventStepsController < ApplicationController
     end
 
     save_event_attributes
-    redirect_to wizard_path(next_step, event_id: 'new')
+    redirect_to wizard_path(next_step, event_id: session[:event_id] || 'new')
   end
-  
+
   def handle_confirmation
     if session[:event_attributes].present? && @event.valid?
       @event.save
+      session[:event_id] = @event.id # 保存されたイベントのIDをセッションに保存
       clear_session_data
       redirect_to events_path, notice: 'イベントが正常に作成されました。'
+    elsif session[:event_attributes].blank?
+      flash[:alert] = '必要な情報が不足しています。最初からやり直してください。'
+      redirect_to new_event_path
     else
-      if session[:event_attributes].blank?
-        flash[:alert] = "必要な情報が不足しています。最初からやり直してください。"
-        redirect_to new_event_path
-      else
-        session[:event_errors] = @event.errors.full_messages
-        redirect_to wizard_path(:confirmation)
-      end
+      session[:event_errors] = @event.errors.full_messages
+      redirect_to wizard_path(:confirmation)
     end
   end
 
@@ -215,14 +217,13 @@ class EventStepsController < ApplicationController
     session.delete(:event_attributes)
     session.delete(:event_errors)
     session.delete(:event_id)
+    session.delete(:image_blob_id)
   end
-  
+
   def check_session_data
-    unless session[:event_attributes].present? || params[:id] == 'basic_info'
-      flash[:alert] = "セッションの有効期限が切れました。最初からやり直してください。"
-      redirect_to new_event_path
-    end
+    return if session[:event_attributes].present? || params[:id] == 'basic_info'
+
+    flash[:alert] = 'セッションの有効期限が切れました。最初からやり直してください。'
+    redirect_to new_event_path
   end
-  
-  
 end

@@ -33,7 +33,6 @@ class Event < ApplicationRecord
     current_step == 'date_and_location'
   end
 
-
   def image_attached?
     image.attached?
   end

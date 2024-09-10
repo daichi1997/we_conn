@@ -54,9 +54,6 @@ RSpec.describe Event, type: :model do
       end
     end
 
-
-
-
     context 'when in image_upload step' do
       before do
         @event = Event.new
