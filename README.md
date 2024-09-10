@@ -32,13 +32,14 @@ We_conn
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false |
 | name               | string  | null: false |
-| bio                | text    | 
+| bio                | text    |
 
 ### Association
   has_many :events
   has_many :likes
   has_many :comments
   has_many :chat_rooms
+  has_many :messages
   has_one_attached :avatar
 
 ## eventsテーブル
