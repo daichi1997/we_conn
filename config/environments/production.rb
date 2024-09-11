@@ -48,7 +48,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
 
   config.action_cable.url = 'wss://your-app-name.onrender.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://your-app-name.onrender.com', /http:\/\/your-app-name.onrender.com.*/ ]
+  config.action_cable.allowed_request_origins = [ 'https://we_conn.onrender.com', /http:\/\/your-app-name.onrender.com.*/ ]
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
