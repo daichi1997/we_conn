@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -21,7 +20,6 @@ Rails.application.routes.draw do
  resources :matches, only: [:index]
  resources :chat_room,only:[:show]
  
- 
   get 'preview_description', to: 'events#preview_description'
 
   get '/privacy', to: 'static_pages#privacy'
@@ -34,8 +32,5 @@ Rails.application.routes.draw do
   patch 'events/new/event_steps/:id', to: 'event_steps#update'
   post 'events/new/event_steps/:id', to: 'event_steps#update'  
   root to: 'home#index'
-
-  mount ActionCable.server => '/cable'
-
 
 end
