@@ -62,7 +62,6 @@ class Event < ApplicationRecord
     ([user] + comments.where(liked_by_owner: true).map(&:user)).uniq
   end
 
-
   private
 
   def image_type
