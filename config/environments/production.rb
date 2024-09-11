@@ -29,10 +29,8 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  config.assets.digest = true
+  config.assets.version = '1.0'
   config.public_file_server.enabled = true
-  config.assets.initialize_on_precompile = false
-  config.assets.debug = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -48,7 +46,7 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
-  config.action_cable.disable_request_forgery_protection = true
+  ActionCable.server.config.disable_request_forgery_protection = true
   config.action_cable.url = "wss://#{ENV['RENDER_EXTERNAL_HOSTNAME']}/cable"
   config.action_cable.allowed_request_origins = [ "https://#{ENV['RENDER_EXTERNAL_HOSTNAME']}" ]  # config.force_ssl = true
 
