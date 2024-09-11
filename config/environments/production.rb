@@ -46,7 +46,8 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
-  config.action_cable.disable_request_forgery_protection = true  config.action_cable.url = "wss://#{ENV['RENDER_EXTERNAL_HOSTNAME']}/cable"
+  config.action_cable.disable_request_forgery_protection = true
+  config.action_cable.url = "wss://#{ENV['RENDER_EXTERNAL_HOSTNAME']}/cable"
   config.action_cable.allowed_request_origins = [ "https://#{ENV['RENDER_EXTERNAL_HOSTNAME']}" ]  # config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
