@@ -46,9 +46,9 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
-
-  config.action_cable.url = 'wss://your-app-name.onrender.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://we_conn.onrender.com', /http:\/\/your-app-name.onrender.com.*/ ]
+  ActionCable.server.config.disable_request_forgery_protection = true
+  config.action_cable.url = 'wss://we_conn.onrender.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://we_conn.onrender.com', /http:\/\/we_conn.onrender.com.*/ ]
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
