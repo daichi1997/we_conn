@@ -52,8 +52,8 @@
             <h5 class="card-title"><%= link_to event.title, event_path(event),class:"title_text" %></h5>
           <div class="card-body">            
                 <p>タグ: <%= event.tag.name %></p>
-            <p class="card-text">概要：<%= auto_link(truncate(event.description, length: 100), html: { target: '_blank' }) %></p>            
-            <p class="card-text">
+            <p class="card-text_D">概要：<%= auto_link(truncate(event.description, length: 100), html: { target: '_blank' }) %></p>            
+            <p class="card-text_D">
 
               <small class="text-muted">
                 主催者: 
