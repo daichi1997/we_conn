@@ -117,6 +117,7 @@ body {
  margin-left: 15%;
  text-align: left;
  background-color: #16ffb1;
+ border: none;
 }
 
 .home_lists:hover {
@@ -1324,4 +1325,17 @@ background-color: rgba(211, 211, 211, 0.596);
 
 #error_explanation ul {
   margin-bottom: 0;
+}
+
+.logoutH{
+  background-color: #3498db00;
+  color: white;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.logoutH:hover{
+  filter: brightness(0.9);
 }

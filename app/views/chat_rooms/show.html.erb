@@ -67,7 +67,9 @@
    <div class="message">
     <div class="upper-message">
        <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
-         <%= render @messages %>
+         <%# <%= render @messages %>
+           <%= render @chat_room.messages %>
+
        </div>
     </div>
   </div>

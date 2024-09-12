@@ -85,49 +85,6 @@
       </div>
       <div class="preview-container"></div>
     
-<script>
-document.addEventListener('turbo:load', function() {
-  document.querySelectorAll('.preview-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      const urlInput = this.previousElementSibling;
-      const url = urlInput.value;
-      const previewContainer = this.closest('.event-item').querySelector('.preview-container');
-
-      if (!url) {
-        previewContainer.innerHTML = '<p>URLを入力してください。</p><button class="close-preview-btn">閉じる</button>';
-        previewContainer.style.display = 'block';
-        return;
-      }
-
-      fetch(`/preview_description?url=${encodeURIComponent(url)}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.error) {
-            previewContainer.innerHTML = `<p>エラー: ${data.error}</p><button class="close-preview-btn">閉じる</button>`;
-          } else {
-            previewContainer.innerHTML = `<p>プレビュー: ${data.description}</p><button class="close-preview-btn">閉じる</button>`;
-          }
-          previewContainer.style.display = 'block';
-        })
-        .catch(error => {
-          console.error('エラー:', error);
-          previewContainer.innerHTML = '<p>説明の取得に失敗しました。</p><button class="close-preview-btn">閉じる</button>';
-          previewContainer.style.display = 'block';
-        });
-    });
-  });
-
-  // イベント委任を使用して閉じるボタンの機能を追加
-  document.addEventListener('click', function(e) {
-    if (e.target && e.target.classList.contains('close-preview-btn')) {
-      const previewContainer = e.target.closest('.preview-container');
-      if (previewContainer) {
-        previewContainer.style.display = 'none';
-      }
-    }
-  });
-});
-</script>
             
           </div>
         </div>

@@ -1,8 +1,0 @@
-document.getElementById('like-btn-<%= @event.id %>').innerHTML = '<%= j render "likes/like", event: @event %>';
-
-<%= turbo_stream.replace "like-and-comment-form-#{@event.id}" do %>
-  <%= render 'likes/like', event: @event %>
-<% end %>
-
-
-document.getElementById('like-btn-<%= @comment.id %>').innerHTML = '<%= j render "comments/comment", event: @event %>';
