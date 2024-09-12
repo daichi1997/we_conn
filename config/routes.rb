@@ -33,4 +33,7 @@ Rails.application.routes.draw do
   post 'events/new/event_steps/:id', to: 'event_steps#update'  
   root to: 'home#index'
 
+  mount ActionCable.server => '/cable'
+
+
 end
