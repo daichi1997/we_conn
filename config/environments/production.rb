@@ -3,7 +3,8 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   ActionCable.server.config.disable_request_forgery_protection = true
   config.action_cable.url = "wss://we-conn.onrender.com/cable"
-  config.action_cable.allowed_request_origins = ['https://we-conn.onrender.com']
+  config.action_cable.allowed_request_origins = ['https://we-conn.onrender.com', /http:\/\we-conn.onrender.*/]
+  
 
 
   # Settings specified here will take precedence over those in config/application.rb.
@@ -20,7 +21,7 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
