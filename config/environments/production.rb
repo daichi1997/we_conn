@@ -1,6 +1,11 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  ActionCable.server.config.disable_request_forgery_protection = true
+  config.action_cable.url = "ws://we-conn.onrender.com/cable" 
+  config.action_cable.allowed_request_origins = ['http://we-conn.onrender.com']
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
