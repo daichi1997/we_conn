@@ -37,7 +37,7 @@
   <div class="comments">
       <h4>＜コメント一覧＞</h4>
       <div class="reflesh-p">
-      <%= button_to "コメント更新",event_path,class:"reflesh" %>
+      <%= link_to "コメント更新", event_path(@event), class: "reflesh", data: { turbo_method: :get } %>
       </div>
       <% @comments.each do |comment| %>
         <div class="comment_content">

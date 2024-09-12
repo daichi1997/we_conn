@@ -438,13 +438,14 @@ padding-top: 10px;
   font-weight: 500;
   text-align: center;
   background-color: lightblue;
-
+  text-decoration: none;
 }
 
 .reflesh-p{
   width: 150px;
   height: 32px;
   margin: 5px auto;
+  text-decoration: none;
 
   
 }
@@ -690,6 +691,8 @@ background: linear-gradient(white ,gray);
 margin: 0 auto;
 padding-left: 20px;
 margin-top: 130px;
+overflow: scroll;
+max-height: 600px;
 
 }
 
