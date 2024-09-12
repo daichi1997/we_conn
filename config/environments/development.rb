@@ -40,7 +40,10 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
-
+  config.assets.debug = true
+  config.assets.compile = true
+  config.assets.cache_store = :null_store
+  config.assets.check_precompiled_asset = false
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

@@ -2,11 +2,12 @@
 <h2><%= @event.title %></h2>
 
 <div class="event-details">
- <ul>
-    <li class="all_form" >概要: <%= auto_link(@event.description, html: { target: '_blank' }) %>
-    <li class="all_form" >日時: <%= @event.start_time.strftime("%Y-%m-%d %H:%M") %>
-    <li class="all_form" >場所: <%= @event.location %>
+ <ul class="event-details_list">
+    <li class="all_form_D" >概要: <%= auto_link(@event.description, html: { target: '_blank' }) %></li>
+    <li class="all_form" >日時: <%= @event.start_time.strftime("%Y-%m-%d %H:%M") %></li>
+    <li class="all_form" >場所: <%= @event.location %></li>
   </ul>
+  
     <% if @event.image.attached? %>
     <%= image_tag @event.image.variant(resize_to_limit: [500, 300]), class: "event-image"%>
   <% end %>
@@ -35,6 +36,9 @@
 
   <div class="comments">
       <h4>＜コメント一覧＞</h4>
+      <div class="reflesh-p">
+      <%= button_to "コメント更新",event_path,class:"reflesh" %>
+      </div>
       <% @comments.each do |comment| %>
         <div class="comment_content">
           <strong><%= link_to comment.user.name, "/users/#{comment.user_id}", class: "comment_user" %>：</strong>

@@ -2,7 +2,7 @@
 <% if user_signed_in? && @event.liked_by?(current_user) %>
       <%= form_with(model: [@event, @comment], local: true) do |form| %>
         <%= form.text_area :content, placeholder: "コメントを入力", rows: "2",class:"comment_form" %>
-     <%= form.submit "送信" ,class:"sendbtn" %>※要更新
+     <%= form.submit "送信" ,class:"sendbtn" %>
             <% end %>
 
                    <% if current_user == @event.user %>

@@ -192,6 +192,7 @@ h2{
  font-size: 30px;
 }
 
+
 .field_d{
  text-align: center;
  margin-top: 20px;
@@ -407,7 +408,7 @@ height: 30px;
 font-weight: 900;
 border:1px solid  red;
 background-color: yellow;
-width: 400px;
+width: 400px; 
 margin: 0 auto;
 padding-top: 10px;
 }
@@ -418,6 +419,42 @@ padding-top: 10px;
 
 .event-details{
   text-align: center;
+}
+
+.all_form_D{
+ width:fit-content;
+ max-width: 50%;
+ margin: 20px auto;
+ text-align: center;
+ 
+}
+
+.reflesh{
+  width: 150px;
+  height: 32px;
+  color: black;
+  border: 1px solid black;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  background-color: lightblue;
+
+}
+
+.reflesh-p{
+  width: 150px;
+  height: 32px;
+  margin: 5px auto;
+
+  
+}
+
+
+.reflesh-p:hover{
+  transform: translateY(-3px);
+  filter: brightness(0.8);
+
+
 }
 
 .redirect{
@@ -668,7 +705,7 @@ margin-top: 130px;
 }
 
 .comment_form{
-  width: 200px;
+  width: 210px;
   height: 70px;
   border-radius: 5px;
 }
