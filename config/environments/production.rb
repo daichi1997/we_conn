@@ -1,3 +1,4 @@
+@ -1,94 +1,96 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
@@ -29,8 +30,6 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  config.assets.version = '1.0'
-  config.public_file_server.enabled = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -46,10 +45,9 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
-  ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = "wss://#{ENV['RENDER_EXTERNAL_HOSTNAME']}/cable"
-  config.action_cable.allowed_request_origins = [ "https://#{ENV['RENDER_EXTERNAL_HOSTNAME']}" ]  
-  config.force_ssl = true
+
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
