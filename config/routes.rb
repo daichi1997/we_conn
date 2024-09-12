@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   end
  end
  resources :matches, only: [:index]
- resources :chat_room,only:[:show]
  
   get 'preview_description', to: 'events#preview_description'
 
