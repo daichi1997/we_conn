@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_09_111153) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_09_034601) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -43,9 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_09_111153) do
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
     t.index ["event_id"], name: "index_chat_rooms_on_event_id"
-    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
   end
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
@@ -68,7 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_09_111153) do
     t.integer "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "likes_count", default: 0
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
