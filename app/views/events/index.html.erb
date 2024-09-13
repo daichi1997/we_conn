@@ -78,12 +78,13 @@
                 開催日: <%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>
               </small>
             </p>
-            
+                      <% if user_signed_in? %>
                   <div class="url-preview">
         <input type="text" class="url-input" placeholder="URLを入力">
         <button class="preview-btn">プレビュー</button>
       </div>
       <div class="preview-container"></div>
+      <% end %>
     
             
           </div>
