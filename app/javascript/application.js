@@ -1,7 +1,7 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
-import "@rails/actioncable"
+// impor "@rails/actioncable"
 import "controllers"
-import "channels"
+// import "channels"
 import "preview"
 import "description"

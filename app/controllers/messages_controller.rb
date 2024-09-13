@@ -3,19 +3,29 @@ class MessagesController < ApplicationController
   before_action :set_chat_room
 
 
+  # def create
+    # @message = @chat_room.messages.build(message_params.merge(user: current_user))
+    # if @message.save
+      # ActionCable.server.broadcast(
+  # "chat_room_#{@chat_room.id}",
+  # { message: render_to_string(partial: 'messages/message', locals: { message: @message }) }
+# )
+      # head :ok
+    # else
+      # render json: { error: @message.errors.full_messages }, status: :unprocessable_entity
+    # end
+  # end
+
   def create
     @message = @chat_room.messages.build(message_params.merge(user: current_user))
+    
     if @message.save
-      ActionCable.server.broadcast(
-  "chat_room_#{@chat_room.id}",
-  { message: render_to_string(partial: 'messages/message', locals: { message: @message }) }
-)
-      head :ok
+      redirect_to event_chat_room_path(@event), notice: 'メッセージが送信されました'
     else
-      render json: { error: @message.errors.full_messages }, status: :unprocessable_entity
+      flash.now[:alert] = 'メッセージの送信に失敗しました'
+      render :new
     end
   end
-
   private
 
   def set_chat_room
