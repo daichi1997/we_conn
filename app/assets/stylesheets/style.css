@@ -23,18 +23,19 @@
  z-index: -1;
 }
 
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
 nav {
   display: flex;
   justify-content: space-between;
  align-items: center;
  max-width: 1200px;
  margin: 0 auto;
-}
-
-.logo {
- font-size: 1.5rem;
- font-weight: bold;
- color: white;
+ 
 }
 
 .nav-links {
@@ -52,6 +53,16 @@ nav {
 .nav-links a:hover {
  color: #ecf0f1;
 }
+
+.logoutH{
+  background-color: #3498db00;
+  color: white;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
 
 /* HOME */
 
@@ -341,6 +352,17 @@ h2{
   margin-bottom: 20px;
 }
 
+.show_path{
+  color: white;
+  background-color: #1fdb9d;
+  border-radius: 5px;
+}
+
+.show_path:hover{
+  filter: brightness(0.8);
+  
+}
+
 .show_edit{
 text-align: center;
 margin-top: 30px;
@@ -455,26 +477,6 @@ padding-top: 10px;
 .final_root{
   margin-top: 25px;
 }
-
-/* .event-details{ */
-  /* text-align: center; */
-/* } */
-/*  */
-/* .all_form{ */
-  /* margin-bottom: 30px; */
-/* } */
-/*  */
-/* .all_form_D{ */
- /* width:fit-content; */
- /* max-width: 50%; */
- /* margin: 20px auto; */
- /* text-align: center; */
- /*  */
-/* } */
-/*  */
-/* .userlink{ */
-  /* font-weight: bold; */
-/* } */
 
 .event-details {
   border-radius: 8px;
@@ -1179,7 +1181,7 @@ border: 2px solid black;
   height: fit-content;
 }
 .side-bar {
-  background-color: #253141;
+  background-color: #2ecc70;
   width: 300px;
   height: 100vh;
 }
@@ -1187,7 +1189,7 @@ border: 2px solid black;
 .side-bar-header {
   height: 100px;
   padding: 0 20px;
-  background-color: lightblue;
+  background-color: #5dbbea;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1234,7 +1236,7 @@ border: 2px solid black;
 
 .room-item {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #3498db;
   margin-bottom: 10px;
   border-radius: 5px;
   margin-top: 20px;
@@ -1265,7 +1267,7 @@ border: 2px solid black;
   padding: 0 40px;
   display: flex;
   justify-content: space-between;
-  background-color: rgb(165, 97, 42)
+  background-color: #f39c12
 }
 
 .participants-list {
@@ -1273,7 +1275,7 @@ border: 2px solid black;
   padding: 20px;
   overflow-x: auto; 
   border: 2px solid gray;
-  background-color: rgb(165, 97, 42)
+  background-color: #f39c12;
 
 }
 
@@ -1315,10 +1317,11 @@ margin-top: 40px;
 
 .header-button  {
   text-decoration: none;
-  border: 3px solid red;
+  border: 3px solid #3398db;
   color: white;
   padding: 20px;
-  background-color: darkred;
+  background-color: #2ecc70;
+  box-shadow: #27ae60;
 }
 
 .header-button:hover{
@@ -1327,7 +1330,7 @@ margin-top: 40px;
 
 
 .messages {
-  background-color: #FAFAFA;
+  background-color:#3498db48;
   height: calc(100vh - 257px);
   padding: 46px 40px 0;
   overflow: scroll;
@@ -1364,7 +1367,7 @@ margin-top: 40px;
 }
 
 .form {
-  background-color: #DDDDDD;
+  background-color: #f39c12;
   height: 70px;
   padding: 20px 40px;
   display: flex;
@@ -1403,7 +1406,7 @@ margin-top: 40px;
 }
 
 .sorry{
-  color: rgb(216, 24, 24);
+  color: rgb(255, 24, 24);
   font-weight: 600;
 }
 
@@ -1639,14 +1642,6 @@ background-color: rgba(211, 211, 211, 0.596);
   margin-bottom: 0;
 }
 
-.logoutH{
-  background-color: #3498db00;
-  color: white;
-  border: none;
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 3px;
-}
 
 .logoutH:hover{
   filter: brightness(0.9);

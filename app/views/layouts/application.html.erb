@@ -20,21 +20,22 @@
       <nav>
         <div><%= link_to 'WE Conn', root_path, class: "logo" %></div>
         <ul class="nav-links">
-          <li><%= link_to 'イベント一覧', events_path %></li>
+          <li class="nav-links"><%= link_to 'イベント一覧', events_path %></li>
           <% if user_signed_in? %>
-        <li><%= link_to 'イベント作成', new_event_step_path(:basic_info) %></li>
-         <li><%= link_to current_user.name, user_path(current_user), class: "user-name" %></li>
-        <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo: false },class:"logoutH" %></li>
-         <li> <%= link_to 'マッチング履歴', matches_path %></li>
-             <% if @new_matches_count > 0 %>
-      <span class="notification-count">new match![ <%= @new_matches_count %> ]件</span>
-      <% end %>
+        <li class="nav-links"><%= link_to 'イベント作成', new_event_step_path(:basic_info) %></li>
+         <li class="nav-links"><%= link_to current_user.name, user_path(current_user), class: "user-name" %></li>
+        <li class="nav-links"><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo: false },class:"logoutH" %></li>
+         <li class="nav-links"> <%= link_to 'マッチング履歴', matches_path %></li>
           <% else %>
-            <li><%= link_to '新規登録', new_user_registration_path %></li>
-            <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <li class="nav-links"><%= link_to '新規登録', new_user_registration_path %></li>
+            <li class="nav-links"><%= link_to 'ログイン', new_user_session_path %></li>
           <% end %>
         </ul>
+         <% if @new_matches_count > 0 %>
+      <span class="notification-count">new match![ <%= @new_matches_count %> ]件</span>
+      <% end %>
       </nav>
+      
     </header>
 
     <main class="main-content">
