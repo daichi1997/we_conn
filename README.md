@@ -10,6 +10,7 @@ We_conn
 
 
 ### URL
+https://we-conn.onrender.com/
 
 ### テスト用アカウント
 mail_address: test@test.com <br>
@@ -211,7 +212,13 @@ Visual Studio Code
 ## 実装予定の機能
 
 チャットルームの非同期化（現在は送信からリダイレクトする形）
+コメントいいねの非同期化
+google mapを入れ込む（API設定）
 SNS連携
+Boot strapを使ってのUI更新
+
+等を予定しております！
+
 
 
 

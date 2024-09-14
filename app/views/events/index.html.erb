@@ -42,7 +42,7 @@
                     <p>行きたい! :<span id="likes-count-<%= event.id %>"><%= event.likes_count %></span></p>
 
           <% if event.image.attached? %>
-            <%= image_tag event.image.variant(resize: "300x200^", gravity: "center", crop: "300x200+0+0"), class: "card-img-top" %>
+            <%= image_tag event.image.variant(resize: "300x200^", gravity: "center", crop: "300x200+0+0"), class: "card-img-top",alt:"No Image" %>
           <% else %>
             <div class="card-img-none " style="height: 200px;">
               <span class="text-muted">No Image</span>
@@ -51,12 +51,12 @@
 
             <h5 class="card-title"><%= link_to event.title, event_path(event),class:"title_text" %></h5>
           <div class="card-body">            
-                <p>タグ: <%= event.tag.name %></p>
-            <p class="card-text_D">概要：<%= auto_link(truncate(event.description, length: 100), html: { target: '_blank' }) %></p>            
+                <p class="card-tag"> #<%= event.tag.name %></p>
+            <p class="card-text_D">[概要]<br><%= auto_link(truncate(event.description, length: 100), html: { target: '_blank' }) %></p>            
             <p class="card-text_D">
 
               <small class="text-muted">
-                主催者: 
+                [主催者]<br>
                     <% if event.user.avatar.attached? %>
         <%= image_tag event.user.avatar.variant(resize: "50x50"), class: "user-img_index" %>
       <% else %>
@@ -69,13 +69,13 @@
 
               <p class="card-text">
               <small class="text-muted">
-                場所: <%= event.location %>
+                [場所]<br> <%= event.location %>
               </small>
             </p>
             </p>
             <p class="card-text">
               <small class="text-muted">
-                開催日: <%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>
+                [開催日]<br> <%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>
               </small>
             </p>
                       <% if user_signed_in? %>
@@ -83,7 +83,7 @@
         <input type="text" class="url-input" placeholder="URLを入力">
         <button class="preview-btn">プレビュー</button>
       </div>
-      <div class="preview-container"></div>
+      <div class="preview-container">PreviewField</div>
       <% end %>
     
             
