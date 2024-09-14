@@ -16,14 +16,14 @@
 
 <div class="basic_info">
  <ul>
-  <li class="all_form" ><%= f.label :tag_id ,"タグ"%><br></li>
-  <li class="all_form" ><%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: "タグを選択してください" %>
-  <li class="all_form" ><%= f.label :title ,"イベントタイトル"%><br></li>
-  <li class="all_form"><%= f.text_field :title ,class:"title_form",placeholder: "イベント名を入力してください"%><br></li>
-  <li class="all_form"><%= f.label :description,"概要欄" %><br></li>
-  <li class="all_form"><%= f.text_area :description,class:"description",placeholder: "イベントリンクと内容を入力してください" %><br></li>
+  <li class="basic_form" ><%= f.label :tag_id ,"タグ"%><br></li>
+  <li class="basic_form" ><%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: "タグを選択してください" %>
+  <li class="basic_form" ><%= f.label :title ,"イベントタイトル"%><br></li>
+  <li class="basic_form"><%= f.text_field :title ,class:"title_form",placeholder: "イベント名を入力してください"%><br></li>
+  <li class="basic_form"><%= f.label :description,"概要欄" %><br></li>
+  <li class="basic_form"><%= f.text_area :description,class:"description",placeholder: "イベントリンクと内容を入力してください" %><br></li>
 
-  <li class="all_form"><%= f.submit '次へ', class: "next_button" %></li>
+  <li class="basic_form"><%= f.submit '次へ', class: "next_button" %></li>
   </ul>
 </div>
 <% end %>
