@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @event.comments.build(comment_params)
     @comment.save
     respond_to do |format|
-      format.js
+      format.turbo_stream
       format.html { redirect_to @event }
     end
   end
@@ -22,14 +22,13 @@ class CommentsController < ApplicationController
   def toggle_owner_like
     @comment.toggle_owner_like!
     @event = @comment.event
-    @comment.reload # 確実に最新の状態を取得
 
     Rails.logger.debug "Comment: #{@comment.inspect}"
     Rails.logger.debug "Event: #{@event.inspect}"
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to @comment.event }
+      format.html { redirect_to @event }
     end
   end
 
