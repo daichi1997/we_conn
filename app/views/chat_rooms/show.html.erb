@@ -46,6 +46,13 @@
        イベント：<%= @event.title %>
        </div>
       </div>
+
+          <% if @event.image.attached? %>
+            <%= image_tag @event.image.variant(resize: "180x120", gravity: "center", crop: "180x120+0+0"), class: "card-img-top",alt:"No Image" %>
+          <% else %>
+              ※No Image
+          <% end %>
+
         <div class="participants-list">
           <h3>他メンバー</h3>
           <ul>
@@ -63,16 +70,16 @@
 </div>
 
 <%# ここまでヘッダー %>
-<div class="messages">
-   <div class="message">
-    <div class="upper-message">
-       <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
-           <%= render @chat_room.messages %>
-       </div>
-    </div>
-  </div>
-</div>
-
+<%# <div class="messages"> %>
+   <%# <div class="message"> %>
+    <%# <div class="upper-message"> %>
+       <%# <div id="messages" data-chat-room-id="<%= @chat_room.id %>"> %>
+           <%# <%= render @chat_room.messages %> %>
+       <%# </div> %>
+    <%# </div> %>
+  <%# </div> %>
+<%# </div> %>
+<%#  %>
 <div class="form">
    <div class="form-input">
 <div id="new_message">
