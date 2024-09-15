@@ -215,7 +215,6 @@ Visual Studio Code
 コメントいいねの非同期化
 google mapを入れ込む（API設定）
 SNS連携
-Boot strapを使ってのUI更新
 
 等を予定しております！
 
