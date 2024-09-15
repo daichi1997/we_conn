@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
       redirect_to event_chat_room_path(@event), notice: 'メッセージが送信されました'
     else
       flash.now[:alert] = 'メッセージの送信に失敗しました'
-      render :new
+      render event_chat_room_path(@event)
     end
   end
   private
