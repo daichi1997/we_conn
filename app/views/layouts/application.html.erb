@@ -31,8 +31,10 @@
             <li class="nav-links"><%= link_to 'ログイン', new_user_session_path %></li>
           <% end %>
         </ul>
+        <% if user_signed_in? %>
          <% if @new_matches_count > 0 %>
       <span class="notification-count">new match![ <%= @new_matches_count %> ]件</span>
+      <% end %>
       <% end %>
       </nav>
       
