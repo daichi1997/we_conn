@@ -8,10 +8,6 @@ class CommentsController < ApplicationController
   def create
     @comment = @event.comments.build(comment_params)
     @comment.save
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to @event }
-    end
   end
 
   def destroy
@@ -20,12 +16,13 @@ class CommentsController < ApplicationController
   end
 
   def toggle_owner_like
+    @comment = Comment.find(params[:id])
     @comment.toggle_owner_like!
     @event = @comment.event
-
-    Rails.logger.debug "Comment: #{@comment.inspect}"
-    Rails.logger.debug "Event: #{@event.inspect}"
-
+  
+    Rails.logger.debug "Toggle owner like for comment #{@comment.id}"
+    Rails.logger.debug "Turbo Stream request: #{request.format.symbol}"
+  
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to @event }

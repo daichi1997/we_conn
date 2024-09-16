@@ -1,3 +1,4 @@
+<%= turbo_frame_tag "comment_#{comment.id}_like_button" do %>
 <div class="comment_like_button" id="comment_<%= comment.id %>_like_button">
   <%= button_to comment.liked_by_owner ? 'いいね取り消し' : 'いいね', 
                 toggle_owner_like_comment_path(comment), 
@@ -5,14 +6,15 @@
                 form: { data: { turbo_stream: true } },
                 class: "comment_like-button" %>
 
-      <%= link_to event_chat_room_path(@event) do %>
+
       <% if current_user == comment.event.user &&  comment.liked_by_owner %>
+
         <span class="blinking"><div class="matched-box">
-          <div class="matched">
+          <div class="matched">            
           matching!
           </div>
         </div>
         </span>
         <% end %>
-        <% end %>
+        <% end%>
 </div>

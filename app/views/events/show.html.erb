@@ -55,14 +55,13 @@
        <% end %> 
       <% elsif current_user == comment.user && comment.liked_by_owner %>
         <!-- コメント投稿主で、かつイベント投稿主にいいねされた場合 -->
-        <%= link_to event_chat_room_path(@event) do %>
+           
         <span class="blinking"><div class="matched-box">
           <div class="matched">
           matching!
           </div>
         </div>
         </span>
-        <% end %>
       <% end %>
       
 

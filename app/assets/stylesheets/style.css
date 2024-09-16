@@ -505,6 +505,11 @@ padding-top: 10px;
   margin: 20px auto;
 }
 
+.all_form_D{
+  width: fit-content;
+  max-width: 300px;
+  height: fit-content;
+}
 
 .userlink {
   color: #287fb8;
