@@ -94,3 +94,5 @@ gem "gretel"
 gem 'nokogiri'
 gem 'open-uri'
 gem 'rails_autolink'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
